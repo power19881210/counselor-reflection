@@ -193,6 +193,37 @@ table.x th{color:var(--mute);font-weight:500}
 #pdfroot .pc-sub{font-family:var(--font-display);font-size:19px;line-height:1.7;color:var(--ink);margin-top:14px}
 #pdfroot .box{margin:0 0 6px}
 #pdfroot .rec .rq{font-family:var(--font-display);font-size:17px;margin:4px 0}
+#printroot{display:none}
+@media print{
+  @page{size:A4;margin:14mm 14mm 16mm}
+  body.printing>*:not(#printroot){display:none!important}
+  body.printing{background:#fff!important}
+  body.printing #printroot{display:block;width:auto;color:var(--ink);font-family:var(--font-body);font-size:11pt;line-height:1.75;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #printroot *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #printroot .pb{break-inside:avoid;page-break-inside:avoid;margin:0 0 6px}
+  #printroot .pb:first-child{break-after:page;page-break-after:always}
+  #printroot .pcover{min-height:255mm;display:flex;flex-direction:column}
+  #printroot .pc-top{display:flex;justify-content:space-between;font-size:10pt;color:var(--mute);border-bottom:1px solid var(--line);padding-bottom:8px}
+  #printroot .pc-arch{position:relative;flex:1;margin:10mm 8mm 6mm;border-radius:999px 999px 24px 24px;background:var(--accent-soft);padding:70mm 14mm 16mm;overflow:hidden;text-align:center}
+  #printroot .pc-arch svg{position:absolute;left:0;top:0;width:100%;height:100%}
+  #printroot .pc-eb{position:relative;font-family:var(--font-display);font-size:16pt;color:var(--clay)}
+  #printroot .pc-sent{position:relative;font-family:var(--font-display);font-size:24pt;line-height:1.75;margin-top:10px}
+  #printroot .pc-sub{position:relative;font-family:var(--font-display);font-size:14pt;line-height:1.7;margin-top:10px}
+  #printroot .pc-quote{text-align:center;font-family:var(--font-display);font-size:13pt;color:var(--mute);margin:6px 0 0}
+  #printroot .mk{background:linear-gradient(transparent 58%,var(--hl) 58%)}
+  #printroot .psent{font-family:var(--font-display);font-size:17pt;line-height:1.7;margin:4px 0}
+  #printroot .sec{margin-top:8px}
+  #printroot .sec>h3{font-size:15pt;margin-bottom:6px}
+  #printroot .box{background:#f3eee5;border-radius:10px;padding:10px 13px;margin:0 0 6px;font-size:10.5pt}
+  #printroot .box.soft{background:var(--accent-soft)}
+  #printroot .kv{font-size:10.5pt;margin:4px 0}
+  #printroot .note{font-size:9.5pt}
+  #printroot .traj{grid-template-columns:repeat(15,1fr)!important}
+  #printroot .phase{grid-template-columns:repeat(3,1fr)!important}
+  #printroot .bar{grid-template-columns:auto 1fr auto!important;font-size:10.5pt}
+  #printroot .rec .rq{font-family:var(--font-display);font-size:12.5pt;margin:3px 0}
+  #printroot .disclaimer{font-size:9pt}
+}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:9px 18px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9}
 .toast.on{opacity:1}
 /* 投影／沉浸作答：夜晚的輔導室，深橄欖底、淡綠標記 */
@@ -836,7 +867,7 @@ function rPortrait(){
    ${secHead("frame","05 帶走一點","帶走一幅此刻的自畫像")}
    <p class="note">依你已確認的光譜產生討論草稿；選擇與補充會整理成反思摘錄；優勢與風險仍依已確認的光譜產生，不用選項判定人格或學派。</p>
    <div class="big-sent" id="psent">${esc(portraitSentence())}</div>
-   <div class="row" style="margin:-4px 0 14px"><button class="btn" data-act="pdf">下載這幅自畫像（PDF）</button><span class="note">A4 版面，可存成 PDF；瀏覽器不支援時會改成圖片，長按即可儲存</span></div>
+   <div class="row" style="margin:-4px 0 14px"><button class="btn" data-act="pdf">下載這幅自畫像（PDF）</button><span class="note">A4 版面。在自己的網站開啟時，會開啟列印視窗，選「儲存為 PDF」即可，文字可以複製</span></div>
    <label class="note">用你自己的話命名（選填）</label>
    <input type="text" data-bind="p2.name" value="${esc(D.p2.name)}" placeholder="例如：願意等待，也正在練習帶領">
    <div class="sec"><h3>我的光譜</h3>${ph(S.my,"尚未定位；先移動光譜或確認居中。")}</div>
@@ -1386,7 +1417,29 @@ function showImages(pages){
    <div class="ovpages">${pages.map((c,i)=>`<img src="${c.toDataURL("image/jpeg",.9)}" alt="自畫像第 ${i+1} 頁">`).join("")}</div>`;
   document.body.appendChild(ov);
 }
+/* 自己的網站（沒有 Claude 外框）：用瀏覽器列印存成 PDF，文字可複製 */
+async function printPdf(kind,btn){
+  const label=btn.textContent;btn.disabled=true;btn.textContent="正在準備……";
+  try{
+    const old=document.getElementById("printroot");if(old)old.remove();
+    const root=document.createElement("div");root.id="printroot";
+    root.innerHTML=blocksFor(kind).map(b=>`<div class="pb">${b}</div>`).join("");
+    document.body.appendChild(root);
+    await document.fonts.ready;await new Promise(r=>setTimeout(r,400));await document.fonts.ready;
+    const d=new Date(),ds=`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`;
+    const oldTitle=document.title;
+    document.title=`${{p1:"情境札記_我的介入傾向",p3:"校園站位_專業與行政之間的我",all:"我是怎樣的輔導者_完整報告"}[kind]||"我的輔導者自畫像"}_${ds}`;
+    const done=()=>{document.title=oldTitle;document.body.classList.remove("printing");root.remove();window.removeEventListener("afterprint",done);};
+    window.addEventListener("afterprint",done);
+    document.body.classList.add("printing");
+    toast("在列印視窗選「儲存為 PDF」");
+    await new Promise(r=>setTimeout(r,300));
+    window.print();
+  }catch(e){toast("沒有成功開啟列印，請稍後再試");console.log("print",e);}
+  finally{btn.disabled=false;btn.textContent=label;}
+}
 async function makePdf(btn){
+  if(!window.claude){return printPdf(btn.dataset.kind||"portrait",btn);}
   const label=btn.textContent;
   let dl=null;
   try{dl=window.claude&&window.claude.use?await window.claude.use("downloads"):null;}catch(e){dl=null;}
