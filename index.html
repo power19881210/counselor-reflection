@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>同儕團督｜我是怎樣的輔導者？</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Iansui&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* 版面概念：輔導室裡的紙、物件與筆記。暖白紙面、灰綠主色、陶土色小標；沙盤式小物件標示段落；芫荽手寫字寫標題、小禾的話與選項，選到的內容像被螢光筆畫過；左對齊。 */
+:root{
+  --paper:#f5f1ea; --card:#fffdf9; --ink:#2f3a2c; --mute:#6f6c62; --line:#e6e0d4;
+  --accent:#5f6f4c; --accent-soft:#e7ecdd; --clay:#a5603f; --hl:#f3d77a;
+  --font-display:"Iansui","Klee One","Kaiti TC","BiauKai","DFKai-SB",serif;
+  --font-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --r:18px; color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.8;-webkit-font-smoothing:antialiased;font-size:16px}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.4;margin:0;text-wrap:balance;letter-spacing:.02em}
+button{font:inherit;cursor:pointer;color:inherit}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px;border-radius:8px}
+.wrap{max-width:780px;margin:0 auto;padding:12px 18px 90px}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;padding:8px 0 14px;margin-bottom:28px;border-bottom:1px solid var(--line)}
+.brand{font-weight:700;font-size:15px;line-height:1.35;display:flex;align-items:center;gap:8px}
+.brand::before{content:"";width:14px;height:14px;border-radius:50%;border:1.5px solid var(--ink);flex:none}
+.brand small{display:block;font-weight:400;font-size:12px;color:var(--mute)}
+.tabs{display:flex;gap:4px;flex-wrap:wrap}
+.tab{border:1px solid transparent;background:transparent;border-radius:999px;padding:5px 12px;font-size:14px;color:var(--mute)}
+.tab:hover{color:var(--ink)}
+.tab.on{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--hl);text-decoration-thickness:.45em;text-underline-offset:-.14em;text-decoration-skip-ink:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 24px;margin-bottom:18px}
+.eyebrow{font-size:13px;color:var(--clay);font-weight:700;letter-spacing:.06em;margin-bottom:4px}
+.lead{color:var(--mute);margin:8px 0 18px;max-width:36em}
+/* 物件 */
+.obj{flex:none;display:block}
+.sechead{display:flex;gap:16px;align-items:center;margin-bottom:6px}
+.sechead h2{font-size:clamp(21px,3.6vw,26px)}
+/* 首頁 */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:center;padding:6px 0 10px}
+.hero h1{font-size:clamp(34px,6.8vw,52px);line-height:1.25;margin:4px 0 14px}
+.open{grid-column:1/-1;font-family:var(--font-display);font-size:clamp(19px,3.4vw,24px);line-height:1.6;margin:0 0 4px;color:var(--ink)}
+.open mark{background:linear-gradient(transparent 58%,var(--hl) 58%);color:inherit;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.open small{display:block;font-family:var(--font-body);font-size:13px;color:var(--mute);margin-top:4px}
+.hero .lead{margin:0 0 22px;font-size:15px}
+.arch{position:relative;aspect-ratio:4/3.3;border-radius:999px 999px 18px 18px;background:var(--accent-soft);overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+.arch svg{position:absolute;inset:0;width:100%;height:100%}
+.arch p{position:relative;font-family:var(--font-display);font-size:clamp(17px,2.8vw,23px);line-height:2;margin:10% 8% 0;color:var(--ink)}
+.cta{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.entry{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0 18px}
+.entry button{position:relative;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 20px 18px;display:grid;gap:4px;transition:border-color .15s}
+.entry button:hover{border-color:var(--accent)}
+.entry .obj{position:absolute;right:16px;top:16px}
+.entry b{font-family:var(--font-display);font-weight:400;font-size:25px;padding-right:60px}
+.entry span{font-size:14px;color:var(--mute);padding-right:40px}
+.entry em{font-style:normal;font-size:13.5px;color:var(--accent);font-weight:700;margin-top:8px}
+/* 按鈕 */
+.btn{border:1.5px solid var(--accent);border-radius:999px;padding:10px 20px;font-weight:700;background:var(--accent);color:#fff;font-size:15px}
+.btn:hover{background:#4f5d3f}
+.btn.ghost{background:var(--card);color:var(--ink);border-color:var(--line);font-weight:500}
+.btn.ghost:hover{border-color:var(--ink)}
+.btn.sm{padding:5px 13px;font-size:13.5px}
+.btn:disabled{opacity:.35;cursor:default}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.note{font-size:13px;color:var(--mute)}
+/* 段落導覽 */
+.steps-nav{display:flex;gap:6px 18px;flex-wrap:wrap;padding:12px 16px;background:#efeae0;border-radius:12px;margin:0 0 26px;font-size:14px;position:sticky;top:6px;z-index:5}
+.steps-nav button{border:0;background:none;padding:2px 0;color:var(--mute)}
+.steps-nav button:hover{color:var(--ink)}
+.steps-nav b{color:var(--clay);margin-right:4px;font-variant-numeric:tabular-nums}
+/* 作答 */
+.progress{height:5px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0 22px}
+.progress i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.qmeta{font-size:13.5px;color:var(--mute);display:flex;justify-content:space-between;font-variant-numeric:tabular-nums}
+.scene{font-size:14px;color:var(--clay);font-weight:700}
+.situ{color:var(--mute);margin:6px 0 4px;font-size:15px}
+.quote{font-family:var(--font-display);font-size:clamp(21px,3.6vw,27px);line-height:1.6;margin:12px 0 6px;padding:14px 18px;background:#f3efe6;border-radius:4px 18px 18px 18px;border-left:4px solid var(--hl)}
+.ask{font-weight:700;margin:22px 0 10px}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:#fbf9f4;border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin:0 0 8px;line-height:1.75;font-family:var(--font-display);font-size:17px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:#c9c1b1}
+.opt .k{display:none}
+.opt::before{content:"";flex:none;width:18px;height:18px;border-radius:50%;border:1.5px solid #a9a395;margin-top:4px;background:#fff}
+.opt.sel{border-color:var(--accent);background:#fffdf6}
+.opt.sel span:last-child{background:linear-gradient(transparent 56%,var(--hl) 56%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.opt.sel::before{border-color:var(--accent);background:radial-gradient(circle,var(--accent) 0 45%,#fff 50%)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0}
+.chip{border:1px solid var(--line);background:#fbf9f4;border-radius:999px;padding:5px 14px;font-size:14px;text-align:left;line-height:1.6}
+.chip:hover{border-color:#c9c1b1}
+.chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chips.col{flex-direction:column;align-items:stretch;gap:8px}
+.chips.col .chip{border-radius:10px;padding:10px 14px;display:flex;gap:12px;align-items:flex-start;font-size:16.5px;font-family:var(--font-display)}
+.chips.col .chip::before{content:"";flex:none;width:17px;height:17px;border-radius:4px;border:1.5px solid #a9a395;background:#fff;margin-top:3px}
+.chips.col .chip.on{background:#fbf1cf;color:var(--ink);border-color:#d9b94f}
+.chips.col .chip.on::before{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat,var(--accent);border-color:var(--accent)}
+.more{margin-top:22px;padding-top:18px;border-top:1px dashed var(--line)}
+.more h4{font-size:15px;font-family:var(--font-body)}
+textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 13px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
+textarea:focus,input[type=text]:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+textarea{min-height:76px;resize:vertical;margin-top:6px}
+.nav{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:22px}
+/* 結果 */
+.sec{margin-top:30px}
+.sec>h3{font-size:20px;margin-bottom:10px}
+.sec ul{margin:0;padding-left:20px}
+.sec li{margin:4px 0}
+.big-sent{position:relative;font-family:var(--font-display);font-size:clamp(21px,3.8vw,28px);line-height:1.7;text-decoration:underline;text-decoration-color:var(--hl);text-decoration-thickness:.4em;text-underline-offset:-.12em;text-decoration-skip-ink:none;margin:16px 0;padding:22px 22px 22px 96px;background:var(--accent-soft);border-radius:18px;min-height:96px;display:flex;align-items:center}
+.big-sent::before{content:"";position:absolute;left:24px;top:50%;width:50px;height:58px;transform:translateY(-50%);border-radius:999px 999px 6px 6px;background:var(--card);border:1.5px solid var(--accent)}
+.big-sent::after{content:"";position:absolute;left:38px;top:calc(50% + 4px);width:22px;height:22px;border-radius:50%;border:1.5px solid var(--clay)}
+.bar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;font-size:14.5px;margin:10px 0}
+.bar>span:first-child{white-space:nowrap;min-width:6.4em}
+.bar .t{height:12px;background:#efebe2;border-radius:99px;overflow:hidden}
+.bar .t i{display:block;height:100%;border-radius:99px}
+.bar .n{white-space:nowrap;text-align:right;color:var(--mute);font-variant-numeric:tabular-nums;font-size:13.5px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:1px}
+details{background:#fbf9f4;border:1px solid var(--line);border-radius:12px;margin:8px 0;padding:0 16px}
+details[open]{padding-bottom:14px;background:var(--card)}
+summary{cursor:pointer;padding:12px 0;font-weight:700;list-style:none;display:flex;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";margin-left:auto;color:var(--mute);font-weight:400;font-size:20px;line-height:1}
+details[open] summary::after{content:"−"}
+.kv{margin:7px 0;font-size:15px}
+.kv b{color:var(--accent)}
+.box{background:#f6f2ea;border:0;border-radius:12px;padding:14px 16px;margin:8px 0;font-size:15px}
+.box.soft{background:var(--accent-soft)}
+.disclaimer{font-size:13px;color:var(--mute);border-top:1px solid var(--line);padding-top:14px;margin-top:28px}
+.grouph{font-size:18px;margin:24px 0 8px;color:var(--clay)}
+.sp{background:#fbf9f4;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:8px 0}
+.sp .hd{display:flex;justify-content:space-between;gap:8px;font-weight:700}
+.sp .st{font-weight:400;font-size:13.5px;color:var(--accent);font-variant-numeric:tabular-nums}
+.sp.unset .st{color:var(--mute)}
+.sp .ends{display:flex;justify-content:space-between;font-size:14px;margin-top:6px}
+.sp input[type=range]{width:100%;accent-color:var(--accent)}
+.sp.unset input[type=range]{opacity:.35}
+.sp .q{font-size:13.5px;color:var(--mute);margin:4px 0 6px}
+.theory{display:grid;gap:0}
+ol.steps{padding-left:22px;margin:6px 0}
+ol.steps li{margin:4px 0}
+.traj{display:grid;grid-template-columns:repeat(15,1fr);gap:4px;margin:10px 0 8px}
+.td{aspect-ratio:1;border-radius:50%;color:#fff;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;background:#ddd6c8;font-variant-numeric:tabular-nums}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--mute)}
+.phase{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.phase .box{margin:0}
+.mini{display:flex;height:8px;border-radius:99px;overflow:hidden;background:#e8e3d8;margin:8px 0 4px}
+.mini i{display:block;height:100%}
+table.x{width:100%;border-collapse:collapse;font-size:14px;margin:6px 0}
+table.x th,table.x td{border-bottom:1px solid var(--line);padding:8px 4px;text-align:left;vertical-align:top}
+table.x th{color:var(--mute);font-weight:500}
+.ovr{display:grid;grid-template-columns:70px 1fr;gap:10px;align-items:center;font-size:13px;margin:6px 0}
+.ovr .nm{font-weight:700}
+.ovt{position:relative;height:16px}
+.ovt::before{content:"";position:absolute;left:0;right:0;top:7px;height:2px;background:var(--line)}
+.ovt::after{content:"";position:absolute;left:50%;top:3px;width:1px;height:10px;background:#bdb5a4}
+.ovt .m{position:absolute;top:1px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);transform:translateX(-50%);z-index:1}
+.ovl{display:flex;justify-content:space-between;color:var(--mute);font-size:12px;line-height:1.3}
+.ovr.un .ovt::before{background:repeating-linear-gradient(90deg,var(--line) 0 4px,transparent 4px 8px)}
+.tagc{display:inline-block;border-radius:999px;padding:0 9px;font-size:12.5px;color:#fff;margin:2px 4px 2px 0}
+.thc{background:#fbf9f4;border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin:8px 0}
+.thc.set{background:var(--card);border-color:#cfc8b8}
+.thn{font-family:var(--font-display);font-size:19px}
+.thd{font-size:14px;color:var(--mute);margin:2px 0 4px}
+.tha{font-size:13.5px;color:var(--accent)}
+.thlv{margin:10px 0 0}
+.thlv .chip{padding:4px 12px;font-size:13.5px}
+.pjth .grouph{color:var(--hl)}
+.pjth .thc{background:var(--pj-card);border-color:var(--pj-line)}
+.pjth .thd{color:var(--pj-mute)}
+.pjth .tha{color:var(--hl)}
+#pdfroot{position:absolute;left:-12000px;top:0;width:720px;background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.8;font-size:15px}
+#pdfroot .pb{padding:2px 4px 8px;background:var(--paper)}
+#pdfroot .sec{margin-top:10px}
+#pdfroot .pc-top{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);border-bottom:1px solid var(--line);padding-bottom:10px}
+#pdfroot .pcover{min-height:1040px;display:flex;flex-direction:column}
+#pdfroot .pc-arch{position:relative;flex:1;margin:34px 40px 16px;border-radius:999px 999px 28px 28px;background:var(--accent-soft);padding:300px 60px 80px;overflow:hidden;text-align:center}
+#pdfroot .pc-arch svg{position:absolute;left:0;top:0;width:100%;height:100%}
+#pdfroot .pc-eb{position:relative;font-family:var(--font-display);font-size:22px;color:var(--clay)}
+#pdfroot .pc-sent{position:relative;font-family:var(--font-display);font-size:34px;line-height:1.75;margin-top:16px}
+#pdfroot .pc-sub{position:relative;font-size:13px;color:var(--mute);margin-top:8px}
+#pdfroot .pc-quote{text-align:center;font-family:var(--font-display);font-size:19px;color:var(--mute);margin:10px 0 18px}
+#pdfroot .mk{background:linear-gradient(transparent 58%,var(--hl) 58%)}
+#pdfroot .psent{font-family:var(--font-display);font-size:24px;line-height:1.7;margin:6px 0}
+#pdfroot .box{background:#efe9de}
+#pdfroot .box.soft{background:var(--accent-soft)}
+#pdfov{position:fixed;inset:0;z-index:20;background:rgba(40,44,36,.88);overflow:auto;-webkit-overflow-scrolling:touch}
+#pdfov .ovbar{position:sticky;top:0;display:flex;gap:12px;align-items:flex-start;justify-content:space-between;background:var(--card);color:var(--ink);padding:14px 16px;border-bottom:1px solid var(--line)}
+#pdfov .ovbar .btn{flex:none;white-space:nowrap}
+#pdfov .ovbar b{font-family:var(--font-display);font-weight:400;font-size:19px}
+#pdfov .ovpages{display:grid;gap:14px;padding:16px;max-width:720px;margin:0 auto}
+#pdfov img{width:100%;height:auto;display:block;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,.25);-webkit-touch-callout:default}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:9px 18px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9}
+.toast.on{opacity:1}
+/* 投影／沉浸作答：夜晚的輔導室，深橄欖底、淡綠標記 */
+body.proj{--pj-bg:#1f251e;--pj-card:#2a3228;--pj-line:#3d4739;--pj-ink:#f2efe7;--pj-mute:#a9ae9f;--hl:#f3d77a;background:var(--pj-bg);color:var(--pj-ink);color-scheme:dark}
+body.proj .wrap{max-width:1040px}
+body.proj header.top{border-color:var(--pj-line)}
+body.proj .brand::before{border-color:var(--pj-ink)}
+body.proj .tab{color:var(--pj-mute)}
+body.proj .tab:hover{color:var(--pj-ink)}
+body.proj .tab.on{color:var(--pj-ink);text-decoration-color:rgba(243,215,122,.55)}
+body.proj .brand small{color:var(--pj-mute)}
+body.proj :focus-visible{outline-color:var(--hl)}
+.pj .scene{color:var(--hl);font-size:clamp(16px,1.8vw,19px)}
+.pj .situ{color:var(--pj-mute);font-size:clamp(16px,1.9vw,21px)}
+.pj .quote{font-size:clamp(26px,4vw,44px);color:#fff;background:var(--pj-card);margin:14px 0 6px;padding:20px 26px;border-radius:6px 26px 26px 26px}
+.pj .disc{border-top:1px solid var(--pj-line);padding-top:16px;margin-top:8px;font-size:clamp(15px,1.6vw,18px);color:var(--pj-mute)}
+.pj .disc b{color:var(--hl)!important}
+.pjbar{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;color:var(--pj-mute);font-size:14px;font-variant-numeric:tabular-nums}
+.pjbar .btn.ghost,.pjnav .btn.ghost,.pj .sp.pjsp .btn.ghost{background:transparent;color:var(--pj-ink);border-color:var(--pj-line)}
+.pjbar .btn.ghost:hover,.pjnav .btn.ghost:hover{border-color:var(--pj-ink)}
+.pjbar .btn.on{background:var(--hl);color:var(--pj-bg);border-color:var(--hl)}
+.pjprog{height:4px;background:var(--pj-line);border-radius:99px;overflow:hidden;margin:12px 0 30px}
+.pjprog i{display:block;height:100%;background:var(--hl);transition:width .3s}
+.pjopts{display:grid;gap:10px;margin:16px 0 24px}
+.pjopt{display:flex;gap:14px;align-items:flex-start;text-align:left;background:var(--pj-card);border:1.5px solid transparent;border-radius:14px;padding:15px 20px;font-family:var(--font-display);font-size:clamp(18px,2vw,23px);color:var(--pj-ink);line-height:1.65;transition:border-color .15s}
+.pjopt:hover{border-color:var(--pj-line)}
+.pjopt .k{color:var(--hl);font-weight:700;flex:none}
+.pjopt.sel{border-color:var(--hl);background:#34402f;color:#fff}
+.pjopt.sel span:last-child{background:linear-gradient(transparent 60%,rgba(243,215,122,.4) 60%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.pjchips .chip{background:var(--pj-card);border-color:var(--pj-line);color:var(--pj-ink);font-size:15px}
+.pjchips .chip.on{background:var(--hl);color:var(--pj-bg);border-color:var(--hl)}
+.pjchips.col .chip{font-size:clamp(15px,1.7vw,19px);padding:12px 16px;border-radius:12px}
+.pjchips.col .chip::before{background:transparent;border-color:var(--pj-mute)}
+.pjchips.col .chip.on{background:#34402f;color:#fff;border-color:var(--hl)}
+.pjchips.col .chip.on::before{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%231f251e' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat,var(--hl);border-color:var(--hl)}
+.pj .sp.pjsp{background:var(--pj-card);border-color:var(--pj-line);padding:22px;margin:18px 0}
+.pj .sp.pjsp .ends{font-size:clamp(17px,1.9vw,22px);font-weight:700;align-items:center;font-family:var(--font-display)}
+.pj .sp.pjsp .st{color:var(--hl);font-size:15px;font-weight:500;font-family:var(--font-body)}
+.pj .sp.pjsp input[type=range]{accent-color:var(--hl);height:36px;margin:12px 0}
+.pjnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:24px;color:var(--pj-mute);flex-wrap:wrap}
+.pjnav .btn:not(.ghost){background:var(--hl);border-color:var(--hl);color:var(--pj-bg)}
+.pjnav .hint{font-size:13px}
+body.proj textarea{background:var(--pj-card);color:var(--pj-ink);border-color:var(--pj-line);font-size:16px;margin-top:12px}
+body.proj textarea::placeholder{color:#868c7d}
+body.proj textarea:focus{box-shadow:0 0 0 3px rgba(213,224,189,.2);border-color:var(--hl)}
+body.proj.fs header.top{display:none}
+@media (max-width:640px){
+  .entry{grid-template-columns:1fr}
+  .phase{grid-template-columns:1fr}
+  .card{padding:22px 18px}
+  .traj{grid-template-columns:repeat(8,1fr)}
+  .pjnav .hint{display:none}
+  .tab{padding:4px 9px;font-size:13.5px}
+}
+@media (max-width:480px){
+  .hero{gap:14px}
+  .hero h1{font-size:30px}
+  .hero .lead{font-size:14px}
+  .arch{aspect-ratio:4/4.6}
+  .arch p{font-size:15px;line-height:1.9}
+  .steps-nav{font-size:13px;gap:4px 12px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand">同儕團督｜我是怎樣的輔導者？<small>自我覺察練習</small></div>
+  <nav class="tabs">
+    <button class="tab" data-go="home">入口</button>
+    <button class="tab" data-go="scenes">情境札記</button>
+    <button class="tab" data-go="sketch">自我速寫</button>
+    <button class="tab" data-go="office">校園站位</button>
+    <button class="tab" data-go="report">報告</button>
+    <button class="tab" data-go="project">投影模式</button>
+  </nav>
+</header>
+<main id="app"></main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+/* ================= DATA ================= */
+const CATS=[
+ {name:"關係與接納",hex:"#c07a5a",phrase:"先接住感受",
+  strength:"你在這次選擇中，常先照顧孩子的感受與關係安全，可能為表達和合作留下空間。",
+  risk:"若長期只停在陪伴，可能延後孩子需要的界限、具體協助或環境調整。",
+  ask:"我怎麼知道孩子感到被接住？什麼時候，他需要的不只是理解？",
+  exp:"在一次情緒反映之後，問孩子：「你想再說一點，還是一起想下一步？」",
+  th:"人本／兒童中心",thd:"與同理、接納、尊重孩子主體性的工作精神有所呼應；關係工作也存在於其他取向。"},
+ {name:"脈絡與探索",hex:"#8a78a6",phrase:"多理解一層",
+  strength:"你常想理解眼前反應的脈絡、意義與反覆模式，可能幫助孩子的經驗被更完整地看見。",
+  risk:"若探索速度超過孩子能承受的程度，或停留太久，可能缺少當下需要的支持與行動。",
+  ask:"我現在的理解是孩子說的，還是我的推測？有哪些不同解釋？",
+  exp:"提出理解時加一句：「這樣說貼近你嗎？也可能是別的原因。」",
+  th:"心理動力／阿德勒的部分視角",thd:"對關係經驗、反覆模式、歸屬與行為意義的好奇，可與這些取向對話；不能單靠一句回應辨識學派。"},
+ {name:"結構與行動",hex:"#5a7896",phrase:"把支持化為步驟",
+  strength:"你常把困難整理成可理解的步驟，並邀請練習或協商，可能增加可預期感與行動方向。",
+  risk:"若太快整理或教方法，可能壓縮孩子表達的時間，或把成人的目標當成孩子的目標。",
+  ask:"這個目標是誰的？孩子有沒有同意，並能說出自己的版本？",
+  exp:"教一項技巧前，先確認孩子想改善什麼，再一起決定是否試做。",
+  th:"CBT 與技能練習的部分視角",thd:"共同理解情境、想法、感受與行為，以及合作練習，可與認知行為取向對話；有結構不等於只做 CBT。"},
+ {name:"資源與例外",hex:"#6f8f5a",phrase:"尋找已有的可能",
+  strength:"你常留意孩子已做得到的地方、例外與小改變，可能幫助孩子辨識資源與主動性。",
+  risk:"若太快尋找正向經驗，仍需要被理解的痛苦或環境阻礙，可能尚未充分被討論。",
+  ask:"我看見資源時，有沒有也聽見孩子覺得困難的部分？",
+  exp:"先接住一段困難，再問：「有沒有一次稍微不一樣？當時是怎麼做到的？」",
+  th:"焦點解決／阿德勒鼓勵的部分視角",thd:"例外、小步驟與資源呼應焦點解決；鼓勵與歸屬也可與阿德勒取向對話。相似提問仍可能有不同目的。"},
+ {name:"象徵與媒介",hex:"#c29b4a",phrase:"用多種方式靠近",
+  strength:"你常邀請孩子透過圖像、物件、遊戲或沙盤表達，可能拓展語言以外的溝通空間。",
+  risk:"媒介若由成人偏好主導，或太快替作品解釋，可能蓋過孩子自己的選擇與意義。",
+  ask:"這個媒介是孩子想用的嗎？我能容許作品暫時沒有解釋嗎？",
+  exp:"先讓孩子選擇是否使用媒介，再問：「這裡有哪一部分是你想讓我知道的？」",
+  th:"遊戲治療／沙遊的媒介視角",thd:"使用遊戲或沙盤不等於正在進行正式遊戲治療或沙遊。兩者涉及不同理論與訓練，需依專業能力與孩子意願使用。"}
+];
+const SC=[
+ ["初次見面・走進輔導室","小禾坐在椅子邊緣，手指拉著衣角。","老師叫我來的。我也不知道要講什麼。",
+  ["你還不確定這裡是怎麼回事。我們可以慢慢來，也可以先一起看看這個地方。","被老師叫來的時候，你心裡是怎麼想的？你覺得老師希望我知道什麼？","我先簡單說明我們可以怎麼進行，再一起決定今天要從哪裡開始，好嗎？","如果今天離開時覺得這一趟還不錯，你希望這裡發生一件什麼事？","這裡可以說話，也有紙筆和一些物件。你想用哪一種方式讓我認識你？"]],
+ ["第一次會談・沉默","簡單說明後，小禾低著頭，過了一會兒沒有開口。","……",
+  ["我會在這裡陪你，不用趕著說。你想開始時，可以用你舒服的方式。","現在不說話，對你來說比較像是不知道怎麼說，還是還不確定能不能說？也可能都不是。","我們可以選一個開始：聊今天、看看輔導室，或安靜坐一下。你想選哪個？","有沒有什麼會讓現在容易一點？像換個位置，或先做一件你熟悉的事？","如果你願意，可以用顏色或物件表示現在的感覺，也可以不解釋。"]],
+ ["第二次會談・同儕關係","小禾說起下課的事，聲音忽然變大。","他們都不讓我加入。我才不想跟他們玩！",
+  ["你好像很在意能不能加入，被擋在外面時很不好受。我想多聽聽。","你說「才不想」之前，心裡發生了什麼？那一刻你怎麼理解他們的反應？","我們把那次的經過慢慢排出來：發生什麼、你想到什麼、後來做了什麼，好嗎？","最近有沒有一次，你跟某個人相處稍微自在一點？那次有什麼不同？","如果用幾個角色擺出那個下課，你會怎麼擺？你可以決定要不要讓我看。"]],
+ ["第二次會談・自我評價","小禾看著桌面，語氣低了下來。","反正我就是很討人厭。",
+  ["覺得自己不被喜歡，好像很難受。在這裡，你不用先變成誰才值得被聽見。","「很討人厭」這句話，你是從哪些經驗慢慢相信的？我想先理解你的意思。","我們能一起分開看看「發生的一件事」和「對整個自己的評價」嗎？","有沒有一個人，曾經看見你不一樣的一面？他可能會怎麼描述你？","你想把這句話畫成一個角色嗎？看看它靠近時，你希望怎麼回應它。"]],
+ ["第三次會談・希望老師給答案","小禾抬頭看著你，等你的回答。","那你說，我明天到底要怎麼辦？",
+  ["你很想有人陪你面對明天。我們可以先停在你最擔心的那一刻。","如果我現在給你一個答案，你最希望它幫你處理的是哪一部分？","我們一起列出兩個你願意試的做法，想想各自可能發生什麼，再由你選。","以前有沒有遇過一點像這樣的事，而你讓它好過一點？那次做了什麼？","如果你願意，我們可以用角色演一下明天，隨時停下來換一種回應。"]],
+ ["第三次會談・表達生氣","談到被拒絕時，小禾握緊了拳頭；目前沒有攻擊行為。","我就是氣啊！他們都只會怪我。",
+  ["你很氣，也覺得沒有人聽見你的委屈。我在聽。","他們怪你的那一刻，除了生氣，還有什麼感覺，或讓你想到什麼？","我們先留意一下握緊的手和呼吸。你想一起找個讓身體鬆一點的方法嗎？","有沒有一次你也很氣，卻讓自己撐過去了？那次幫上忙的是什麼？","如果生氣有顏色或形狀，它現在會是什麼樣子？你想用畫的試試嗎？"]],
+ ["第四次會談・沒用的方法","上次討論的做法，小禾試了一次後就停下來。","你說的根本沒用，我不要再試了。",
+  ["你試過卻沒有得到期待的結果，可能很失望。我也想知道你對我的感覺。","當你說沒用，我想理解哪個時刻最讓你覺得不對勁，以及那對你意味著什麼。","謝謝你直接告訴我。我們一起檢查哪個步驟不合適，也可以決定換方法或暫停。","在那次嘗試中，有沒有哪怕很小的一部分比較容易？完全沒有也可以告訴我。","我們可以不用再照原本的方法。你想用圖或物件讓我看見「沒用」的那個時刻嗎？"]],
+ ["第四次會談・家庭期待","小禾說，家人希望自己懂事一點，別讓老師操心。","我已經很努力了，可是他們還是覺得我不夠好。",
+  ["很努力卻還是覺得不被肯定，真的很辛苦。我想先好好聽你說。","在你家，「夠好」通常是什麼樣子？你自己的想法和他們一樣嗎？","你願意一起整理哪些期待是你做得到的、哪些需要大人調整，並討論怎麼表達嗎？","有沒有一次，你的努力曾被誰看見？當時對方注意到了什麼？","如果用不同物件擺出「別人的期待」和「我自己」，你會把它們放在哪裡？"]],
+ ["第五次會談・小小例外","小禾說，昨天和同學一起完成了一張海報。","昨天其實還可以，可是只有那一次而已。",
+  ["那次的感覺好像有點不同，但你也還不敢太放心。我想知道這兩種感覺。","當事情變好時，你好像也會提醒自己別太期待。你怎麼理解這個反應？","我們一起整理那次你做了什麼、對方怎麼回應，看看哪些可以再試一次。","那一次很值得認識。它怎麼發生的？你在裡面做了哪些有幫助的事？","你想用一張畫或一個物件留下那次經驗嗎？讓你決定最值得記住的是什麼。"]],
+ ["第五次會談・關係中的擔心","小禾看了一眼時鐘，忽然問你。","你會不會也覺得我很煩？",
+  ["你很在意我怎麼看你，也可能擔心我不想聽了。我願意聽你說這份擔心。","剛剛有哪個片刻讓你想到我可能會嫌煩？我們可以一起看看，也讓我理解你的感受。","你可以直接問我，也可以告訴我哪種回應讓你不安。我們一起約定怎麼確認，好嗎？","在這裡，有沒有一個片刻，你比較能感覺到我願意陪你？那時發生了什麼？","如果你想，可以用兩個物件表示現在的你和我，讓我看見這份擔心的距離。"]],
+ ["第六次會談・成人的聲音","導師希望小禾改善分組參與；小禾已知道這個期待。","你們是不是都只想讓我乖一點？",
+  ["你擔心自己的感覺沒有位置，只剩下大人想要你怎麼做。我想聽你的版本。","對你來說，「乖一點」代表要放掉什麼？又是哪些經驗讓你有這種感覺？","我們分開列出大人的期待和你的目標，再討論哪些需要協商；不必假裝它們都一樣。","如果這段輔導有一點是為了你自己，你最想讓哪件事不同？","你想畫出大人看到的你，以及你想讓大家認識的你嗎？由你決定要分享多少。"]],
+ ["第六次會談・想換個方式","小禾看向桌邊的沙盤和物件。","今天可不可以不要一直講？",
+  ["可以。謝謝你告訴我現在需要什麼，我們可以放慢，也可以先安靜待著。","可以換方式。如果你願意，我也想理解今天說話有什麼讓你不舒服；不急著回答。","我們一起選今天的安排：安靜、畫畫或用物件，結束前再確認你覺得如何。","以前有什麼不靠說話的方式，會讓你比較自在？今天可以從那個開始。","你可以選擇使用沙盤或物件，照自己的意思創作。我先陪著，不替它解釋。"]],
+ ["第七次會談・再次卡住","前一週較順利，這週小禾又和同學有摩擦。","我就知道，我根本沒變。",
+  ["這次又碰到困難，讓你很失望。現在不需要急著證明自己有進步。","一次卡住好像就變成「根本沒變」。這種看自己的方式，對你來說熟悉嗎？","我們把這次的情境和之前分開看，確認哪些步驟需要調整，而不是判定整個自己。","就算這次很難，和最早的時候相比，有沒有哪一點點不一樣？沒有也可以一起找原因。","你想用圖畫表示這段路嗎？讓順利和卡住的部分都能留在畫面裡。"]],
+ ["接近結束・談分離","你們已共同討論剩下兩次會談，並安排可再求助的管道。","以後有事情，我還可以來找你嗎？",
+  ["想到要結束，可能有些捨不得或不確定。這些感覺都可以在這裡說。","對你來說，「還能來找」最重要的是什麼？結束讓你想到什麼經驗？","我們把可以找誰、怎麼聯絡和需要時的安排寫清楚，確認你知道有哪些選擇。","回頭看，你已經找到哪些支持自己的人和方法？之後可以怎麼讓它們繼續幫忙？","你想做一張卡或選一個象徵，留下你希望帶走的東西嗎？"]],
+ ["最後一次・回望這段路","小禾說現在比較敢表達，但有時仍會想躲起來。","我好像有一點不一樣，可是我也不知道怎麼說。",
+  ["不一定要說得很完整。我願意陪你感受這一點不一樣，也珍惜我們走過的這段時間。","你現在怎麼理解自己的需要？和第一次坐在這裡時，有什麼不同的看法？","我們一起整理你想保留的做法、卡住時的提醒，以及之後可以找的支持。","你會從哪個小地方認出自己不一樣了？其中有哪些是你自己努力出來的？","你想用一幅畫、幾個物件或一個故事，留下這段時間的改變嗎？"]]
+];
+const INNER=["平靜／好奇","想趕快幫上忙","擔心沒有進展","心疼／想保護","不確定／卡住","身體有些緊繃"];
+const ORDER=i=>[0,1,2,3,4].map(j=>(i*2+j)%5); // 選項輪替
+const NUM="①②③④⑤";
+
+const FR=["陪他安靜一會兒，留意非語言訊息","詢問今天發生了什麼","提供遊戲、畫畫或沙盤的選擇","確認他是否想談，協商今天怎麼進行","說出我的觀察，試著反映他的感受","說明晤談安排，提供清楚的開始方式"];
+const GROUPS=["我如何陪孩子前進","我優先關注什麼","我如何理解這段經驗"];
+// [名稱, 組, 左, 右, 追問, [資源L,R], [風險L,R], [下一步L,R]]
+const SP=[
+ ["帶領方式",0,"跟隨","指導","我什麼時候跟隨孩子？又如何判斷他需要更多帶領？",["尊重孩子步調","提供清楚方向"],["可能延後必要的界限或支持","可能壓縮孩子的主動性"],["在跟隨之後，與孩子協商一個小目標","給方法前，先詢問孩子想不想一起找方法"]],
+ ["介入時機",0,"等待","行動","我如何分辨等待是在醞釀，還是在迴避？行動是回應需要，還是想減少不確定？",["容許經驗沉澱與孩子準備","及時把理解帶入嘗試"],["可能錯過需要即時協助或清楚回應的時刻","可能在孩子尚未準備好時推進"],["等待時說明你仍在陪伴，並確認孩子是否需要幫忙","提出行動前，先問孩子現在願不願意試一小步"]],
+ ["安排方式",0,"開放","結構","我如何在自由生成與可預期的安排之間，回應孩子的需要？",["讓會談內容隨互動生成","提供可預期的步驟"],["可能讓需要明確安排的孩子感到無所適從","可能不易回應當下的新需要"],["和孩子共同確認一個鬆散的開始與結束方式","保留一段讓孩子改變議程的時間"]],
+ ["角色位置",0,"陪伴者","專家","我如何運用專業，同時讓孩子保有對自己經驗的發言權？",["並肩理解孩子的經驗","提供專業知識與方向"],["可能因不想主導而難以提出必要的專業觀察","可能讓自己的解釋蓋過孩子的理解"],["把專業觀察當成邀請提出，請孩子確認是否貼近","說明一個理解後，請孩子補充或修正你的看法"]],
+ ["工作重心",1,"關係","技術","我如何確認關係與方法都回應了孩子的需要？",["留意安全感與連結","把支持轉成具體工具"],["可能延後孩子需要的具體協助","可能忽略孩子對方法的感受"],["在接住情緒後，詢問是否想練一個小方法","練習技巧前，先確認孩子是否感到被理解"]],
+ ["前進方向",1,"探索","解決","我正在理解經驗，還是急著離開不舒服？",["容納複雜經驗與多重意義","協助找到可行的下一步"],["可能停在理解而缺少行動","可能太快略過尚未被理解的感受"],["把今天的理解轉成一個由孩子選擇的小行動","談下一步前，先多反映一次孩子的感受"]],
+ ["理解入口",1,"情緒感受","想法認知","我是否也給另一種經驗留了位置，而不只使用自己熟悉的語言？",["辨識與承接情緒經驗","澄清想法與理解事情的方式"],["可能缺少對想法、處境或實際選擇的整理","可能把感受太快變成需要分析或修正的內容"],["接住感受後，詢問當時心裡出現了哪些想法","整理想法時，停下來確認孩子此刻的感受"]],
+ ["促進改變",1,"支持接納","提出挑戰","我的支持是否容許改變？我提出挑戰時，是否有足夠的關係與合作基礎？",["提供被理解與被接納的經驗","協助看見不一致與新的可能"],["可能延後一起面對卡住的模式","可能讓孩子感到被評斷或被推著改變"],["在理解之後，徵求同意再提出一個不同觀察","提出不同觀察後，問孩子聽起來如何，允許不同意"]],
+ ["表達節奏",2,"沉默","對話","沉默時，我在陪伴，還是在退開？說話時，我有留空間嗎？",["容納留白與非語言表達","透過語言澄清經驗"],["可能錯過孩子需要的回應","可能讓語言速度超過孩子的整理速度"],["用一句簡短反映確認孩子是否感到被陪伴","問完一題後稍作停頓，觀察孩子需要的節奏"]],
+ ["時間焦點",2,"過往經驗","當下未來","我選擇回看過去或走向未來，是由什麼需要引導的？",["連結過往經驗與現在的反應","聚焦眼前需要與期待的生活"],["可能停在找原因而減少當下可做的事","可能忽略仍在影響當下的經驗"],["回看一段經驗後，問它對現在有什麼提醒","規劃下一步前，確認有沒有尚未被理解的重要經驗"]],
+ ["工作範圍",2,"個人內在","環境系統","我把改變的責任放在哪裡？有哪些家庭、同儕或校園條件也需要被看見？",["深入理解孩子的內在經驗","看見關係與環境的影響"],["可能把環境造成的困難過度放到孩子身上","可能讓成人協作或制度安排蓋過孩子的聲音"],["多問一個環境問題：什麼條件讓這件事更困難或容易","規劃親師協作前，先理解孩子的意願並說明可協商的範圍"]],
+ ["理解依據",2,"直覺感受","觀察查證","我的感覺提供了什麼線索？我如何確認，而不把直覺或紀錄當成完整事實？",["敏銳覺察當下互動訊號","以具體觀察核對自己的理解"],["可能把自己的感受過快當成孩子的狀態","可能忽略尚難描述或測量的細微經驗"],["把一個直覺寫成暫時假設，再找支持與不同的線索","整理紀錄時，也寫下一個當時難以言說的感受"]]
+];
+const RF=[
+ ["哪類情境或孩子最讓我焦慮？",["孩子長時間沉默，我不確定如何靠近","孩子情緒強烈，我擔心接不住","孩子否定或拒絕我的提議","談了很久，卻看不見明顯改變","親師期待我快速讓孩子改變","孩子的經驗觸動了我的個人經驗"],"描述讓我卡住的互動，不替孩子貼標籤。"],
+ ["什麼時候，我特別想給建議？",["孩子直接問我該怎麼辦","我看見孩子很痛苦，想趕快幫上忙","談話反覆，我想找一個出口","時間快到了，我希望留下具體收穫","我擔心自己沒有發揮作用","我有相關經驗，想分享可行的方法"],"當時孩子需要什麼？我又期待什麼？"],
+ ["當我不知道怎麼辦時，我通常會……",["繼續問問題，蒐集更多資訊","分析原因，試著形成理解","提供建議或教一個技巧","安靜陪伴，等待孩子的步調","轉換媒介，例如畫畫或遊戲","找同儕、督導或其他資源一起想","先停一下，辨識自己的感受"],"問問題、分析、沉默、找資源，或其他反應？"],
+ ["這個習慣保護了什麼？又可能漏掉什麼？",["我重視讓孩子感到安全與被接納","我重視讓孩子保有自主與選擇","我重視提供方向與可行的方法","我期待自己是有能力、能幫上忙的老師","我想減輕當下的不確定或無力感","我想避免關係中的衝突或疏離","我還不確定，想在同儕討論中理解"],"可以想到自己的信念、經驗或現場壓力。"],
+ ["在這些時刻，我注意到自己的……",["平靜，願意多等一會兒","好奇，想理解正在發生什麼","焦慮，擔心自己幫不上忙","挫折，覺得進展卡住了","心疼，很想保護或救援孩子","身體緊繃、呼吸變快或坐立不安","暫時說不上來，想再留意"],"其他情緒或身體感受（選填）"],
+ ["我對孩子需要的理解，主要來自……",["孩子已明確說出他的需要","我是從表情、語氣或互動推測的","主要來自家長、導師或學校的期待","與我的個人經驗或價值觀有關","我還需要向孩子確認","我想先帶到同儕團督中討論"],"我想如何確認自己的理解？（選填）"]
+];
+const TH_GROUPS=["人本與經驗","認知與行為","資源與故事","關係、家庭與系統","媒介與表達","跨取向的工作框架"];
+// [名稱, 說明, 問問自己, 組]
+const THEORY=[
+ ["人本／兒童中心","重視同理、接納、真誠，以及孩子的主體性。兒童中心遊戲治療以遊戲關係支持兒童表達。","我的跟隨，是否讓孩子感覺被理解，也保有必要界限？",0],
+ ["完形","重視此時此地的覺察、未竟事務與經驗的完整，常透過體驗性的活動促進覺察。","我能陪孩子停在「現在正在發生的感受」多久？",0],
+ ["認知行為取向（CBT）","關注想法、情緒與行為的互動，透過共同目標、練習與回饋工作；也重視合作關係。","我提出的練習，是與孩子一起決定的嗎？",1],
+ ["理情行為（REBT）","關注對事件的僵化信念如何影響情緒，透過檢視與駁斥信念，建立更有彈性的想法。","我挑戰孩子的想法時，是否也照顧到他的感受與步調？",1],
+ ["現實治療／選擇理論","關注需求、選擇與責任，常用 WDEP 提問協助評估：目前的做法，能不能幫自己得到想要的？","我邀請孩子負起選擇時，有沒有看見他其實能選擇的範圍？",1],
+ ["正念與接納取向","練習對當下經驗保持覺察與不評價；接納與承諾療法（ACT）也重視朝向價值的行動。","我邀請孩子接納感受時，是否也看見需要改變的處境？",1],
+ ["焦點解決","留意期待的未來、例外經驗、既有資源與可行的小步驟。","尋找方法之前，我有充分聽見困難嗎？",2],
+ ["敘事治療","把人與問題分開（問題外化），尋找被忽略的支線故事與力量，和孩子一起改寫看自己的方式。","我聽見的是問題的故事，還是孩子還沒被說出的故事？",2],
+ ["心理動力","好奇情緒、過往關係經驗與當下互動中的反覆模式，也反思輔導者自身的感受。","我的感受提供了什麼線索？還有哪些不同解釋？",3],
+ ["依附觀點","從照顧關係理解孩子的情緒調節與人際模式；輔導關係也可以成為暫時的安全基地。","我如何成為孩子的安全基地，又不取代他生活中的重要他人？",3],
+ ["阿德勒取向","關注歸屬感、目的、生活風格與社會興趣，透過鼓勵理解行為並拓展選擇。","我是否看見行為背後想連結、想有價值的需要？",3],
+ ["家族系統","把孩子的困擾放回家庭系統看，關注界線、角色、互動循環與代間模式。","孩子的行為，在家裡可能發揮了什麼功能？",3],
+ ["薩提爾模式","重視自我價值與一致性溝通，用冰山隱喻探索行為底下的感受、觀點、期待與渴望。","我看見孩子冰山底下的渴望了嗎？我自己的冰山呢？",3],
+ ["遊戲治療","以遊戲作為兒童表達及治療工作的媒介，可依不同理論採取較跟隨或較指導的方法。","我如何理解孩子的玩法，而不急著替它定義？",4],
+ ["沙遊","運用沙、物件與象徵創作；沙遊與不同沙盤工作的理論及指導程度有所差異。","我能先讓作品與孩子的經驗存在，再詢問其意義嗎？",4],
+ ["表達性藝術","透過繪畫、音樂、肢體、戲劇或書寫等多元媒材表達與整合經驗，重視創作歷程而非作品好壞。","我是否讓孩子自由選擇媒材，也不急著詮釋作品？",4],
+ ["創傷知情","先問「發生了什麼事」，再問「他怎麼了」；重視安全、信任、選擇與賦能，避免再度傷害。","我的回應與學校的流程，有沒有可能讓孩子再次感到不安全？",5],
+ ["動機式晤談","以合作、喚起、尊重自主的精神，探索並強化當事人自己的改變理由。","面對孩子的猶豫，我是在說服他，還是在聽他自己的理由？",5]
+];
+const TH_LV=["常借用","偶爾借用","想多認識","還不熟悉"];
+// 情境札記五類回應 → 相近的視角
+const CAT_TH=[[0],[8,9,10],[2,3,4],[6,7,10],[13,14,15]];
+const EXPS=["給建議前，先問孩子是否想一起找方法","留意一次自己的身體訊號與情緒","用一句話確認孩子此刻最需要什麼","在既定安排中保留孩子可以選擇的空間","晤談後記下一個具體片段，帶到同儕團督","觀察一次慣性介入後，孩子如何回應"];
+
+
+/* ===== 沙盤式小物件 ===== */
+const OBJ={
+ arch:(s=56)=>`<svg class="obj" width="${s}" height="${s}" viewBox="0 0 60 60" aria-hidden="true"><path d="M12 56V30a18 18 0 0 1 36 0v26z" fill="#e7ecdd" stroke="#5f6f4c" stroke-width="1.6"/><path d="M22 56V36a8 8 0 0 1 16 0v20" fill="none" stroke="#5f6f4c" stroke-width="1.4"/></svg>`,
+ rings:(s=56)=>`<svg class="obj" width="${s}" height="${s}" viewBox="0 0 60 60" aria-hidden="true"><circle cx="24" cy="30" r="16" fill="#e7ecdd" stroke="#5f6f4c" stroke-width="1.6"/><circle cx="37" cy="30" r="16" fill="none" stroke="#a5603f" stroke-width="1.6"/></svg>`,
+ stones:(s=56)=>`<svg class="obj" width="${s}" height="${s}" viewBox="0 0 60 60" aria-hidden="true"><ellipse cx="30" cy="47" rx="20" ry="8" fill="#e7ecdd" stroke="#5f6f4c" stroke-width="1.6"/><ellipse cx="30" cy="31" rx="13" ry="7" fill="#f3e3d6" stroke="#a5603f" stroke-width="1.6"/><ellipse cx="30" cy="18" rx="7" ry="5" fill="#fff" stroke="#5f6f4c" stroke-width="1.6"/></svg>`,
+ sprout:(s=56)=>`<svg class="obj" width="${s}" height="${s}" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 54V28" stroke="#5f6f4c" stroke-width="1.6"/><path d="M30 34c-12 0-16-8-16-14 10 0 16 5 16 14z" fill="#e7ecdd" stroke="#5f6f4c" stroke-width="1.6"/><path d="M30 28c0-10 6-16 15-16 0 9-5 16-15 16z" fill="#f3e3d6" stroke="#a5603f" stroke-width="1.6"/><path d="M16 54h28" stroke="#5f6f4c" stroke-width="1.6"/></svg>`,
+ sun:(s=56)=>`<svg class="obj" width="${s}" height="${s}" viewBox="0 0 60 60" aria-hidden="true"><path d="M10 44a20 20 0 0 1 40 0z" fill="#f3e3d6" stroke="#a5603f" stroke-width="1.6"/><path d="M6 50h48" stroke="#5f6f4c" stroke-width="1.6"/><path d="M16 56h28" stroke="#5f6f4c" stroke-width="1.6"/></svg>`,
+ house:(s=56)=>`<svg class="obj" width="${s}" height="${s}" viewBox="0 0 60 60" aria-hidden="true"><path d="M8 26L30 10l22 16" fill="none" stroke="#5f6f4c" stroke-width="1.6" stroke-linejoin="round"/><rect x="13" y="25" width="34" height="27" fill="#e7ecdd" stroke="#5f6f4c" stroke-width="1.6"/><path d="M25 52V40a5 5 0 0 1 10 0v12" fill="#f3e3d6" stroke="#a5603f" stroke-width="1.5"/><circle cx="30" cy="20" r="3" fill="#fff" stroke="#a5603f" stroke-width="1.4"/></svg>`,
+ frame:(s=56)=>`<svg class="obj" width="${s}" height="${s}" viewBox="0 0 60 60" aria-hidden="true"><rect x="12" y="10" width="36" height="42" rx="3" fill="#fff" stroke="#5f6f4c" stroke-width="1.6"/><path d="M12 42l11-11 9 8 6-5 10 9" fill="#e7ecdd" stroke="#5f6f4c" stroke-width="1.4"/><circle cx="38" cy="21" r="4" fill="#f3e3d6" stroke="#a5603f" stroke-width="1.4"/></svg>`
+};
+const archHero=`<div class="arch"><svg viewBox="0 0 400 330" preserveAspectRatio="none" aria-hidden="true"><circle cx="160" cy="120" r="140" fill="none" stroke="#b9c2a6" stroke-width="1.2"/><circle cx="270" cy="210" r="140" fill="none" stroke="#b9c2a6" stroke-width="1.2"/></svg><p>我們選擇的介入，<br>也映照著<br>我們是誰。</p></div>`;
+const secHead=(o,eb,t)=>`<div class="sechead">${OBJ[o](52)}<div><div class="eyebrow">${eb}</div><h2>${t}</h2></div></div>`;
+
+/* ================= STATE ================= */
+const KEY="counselor-reflect-v2";
+const fresh=()=>({p1:{i:0,ans:{},inner:{},fit:null,fitNote:""},p2:{fr:[],frNote:"",sp:{},refl:{},reflNote:{},name:"",exps:[],expNote:"",fix:""},p3:{i:0,ans:{},inner:{},fit:null,fitNote:""}});
+let D=fresh();
+try{const s=JSON.parse(localStorage.getItem(KEY)||"null");if(s&&s.p1&&s.p2)D=Object.assign(fresh(),s);}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(D));}catch(e){}};
+let page="home",pj=0,pjShow=false;
+
+const app=document.getElementById("app");
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const getP=p=>p.split(".").reduce((o,k)=>o==null?o:o[k],D);
+function setP(p,v){const ks=p.split(".");let o=D;ks.slice(0,-1).forEach(k=>{if(o[k]==null)o[k]={};o=o[k];});o[ks[ks.length-1]]=v;save();}
+function arr(p){let a=getP(p);if(!Array.isArray(a)){a=[];setP(p,a);}return a;}
+
+/* ================= ROUTER ================= */
+const PAGES=["home","scenes","scenes-result","sketch","portrait","office","office-result","report","project","project-sketch","project-office"];
+function go(p){if(!p.startsWith("project"))exitFs();page=p;if(location.hash.slice(1)!==p)history.replaceState(null,"","#"+p);render();window.scrollTo(0,0);}
+function render(){
+  document.querySelectorAll(".tab").forEach(t=>{const g=t.dataset.go;t.classList.toggle("on",page===g||page===g+"-result"||(g==="sketch"&&page==="portrait")||(g==="project"&&page.startsWith("project")));});
+  document.body.classList.toggle("proj",page.startsWith("project"));
+  ({home:rHome,scenes:rScene,"scenes-result":rP1,sketch:rSketch,portrait:rPortrait,report:rReport,project:rProj,"project-sketch":rProjSketch,office:rOffice,"office-result":rP3,"project-office":rProjOffice})[page]();
+}
+
+/* ================= HOME ================= */
+function rHome(){
+  const n1=Object.keys(D.p1.ans).length, n2=Object.keys(D.p2.sp).length, n3=Object.keys(D.p3.ans).length;
+  app.innerHTML=`<section class="hero">
+   <p class="open"><mark>「老師叫我來的。我也不知道要講什麼。」</mark><small>小禾，第一次走進輔導室</small></p>
+   <div>
+    <div class="eyebrow">回頭看見自己的一刻</div>
+    <h1>我是怎樣的<br>輔導者？</h1>
+    <p class="lead">先放下「應該怎麼做」，回頭看見自己。<br>從慣常的介入，找到優勢，也留一點空間給新的可能。</p>
+    <div class="cta"><button class="btn" data-go="${n1&&!n2?"sketch":"scenes"}">${n1||n2?"繼續探索":"開始探索"}</button><span class="note">個人約 15–20 分鐘，可自由跳題</span></div>
+   </div>
+   ${archHero}
+  </section>
+  <div class="entry">
+    <button data-go="scenes">${OBJ.arch(50)}<b>情境札記</b><span>陪小禾走過 15 段會談片段，每題五種回應，可以略過</span>${n1?`<em>已作答 ${n1} / 15 題，繼續</em>`:`<em>開始作答</em>`}</button>
+    <button data-go="sketch">${OBJ.rings(50)}<b>自我速寫</b><span>第一反應、12 條光譜、6 題深入反思</span>${n2?`<em>已定位 ${n2} / 12 條，繼續</em>`:`<em>開始速寫</em>`}</button>
+    <button data-go="office">${OBJ.house(50)}<b>校園站位</b><span>輔導老師的專業與行政：10 個學校裡會遇到的處境</span>${n3?`<em>已作答 ${n3} / 10 題，繼續</em>`:`<em>開始作答</em>`}</button>
+  </div>
+  <div class="row"><button class="btn ghost" data-go="project">投影模式（沉浸作答）</button>
+   ${n1?`<button class="btn ghost" data-go="scenes-result">看情境札記結果</button>`:""}
+   ${n2?`<button class="btn ghost" data-go="portrait">看自畫像</button>`:""}
+   ${n3?`<button class="btn ghost" data-go="office-result">看校園站位結果</button>`:""}
+   ${n1||n2||n3?`<button class="btn ghost" data-go="report">產出報告／給 AI 分析</button>`:""}</div>
+  <p class="note" style="margin-top:24px;max-width:40em">選項與分類皆為本活動自編，未經心理計量驗證，不是正式量表、學派判定或能力評量。請不填寫可辨識學生的資料。作答只存在這台裝置的瀏覽器，不會上傳。</p>
+  <div class="row"><button class="btn ghost sm" data-act="wipe">清除全部作答</button></div>`;
+}
+
+/* ================= PART 1 ================= */
+function rScene(){
+  const i=D.p1.i, s=SC[i], a=D.p1.ans[i], inn=D.p1.inner[i]||[];
+  const n=Object.keys(D.p1.ans).length;
+  app.innerHTML=`<section class="card">
+   <div class="qmeta"><span>情境札記　${i+1} / 15</span><span>已作答 ${n} 題</span></div>
+   <div class="progress"><i style="width:${(i+1)/15*100}%"></i></div>
+   <div class="sechead">${OBJ.arch(46)}<div><div class="scene">第 ${i+1} 題</div><h2 style="font-size:20px">${s[0]}</h2></div></div>
+   <p class="situ">情境：${s[1]}</p>
+   <div class="quote">小禾：「${s[2]}」</div>
+   <div class="ask">你會怎麼回應？</div>
+   ${ORDER(i).map((c,j)=>`<button class="opt ${a===c?"sel":""}" data-pick="${c}"><span class="k">${NUM[j]}</span><span>${s[3][c]}</span></button>`).join("")}
+   <div class="more"><h4>多看一層：選這個回應時，我的內在反應是……（選填）</h4>
+    <p class="note" style="margin:2px 0 6px">可複選，只用於回顧，不加入傾向計算。</p>
+    <div class="chips">${INNER.map((f,k)=>`<button class="chip ${inn.includes(k)?"on":""}" data-chip="p1.inner.${i}" data-v="${k}">${f}</button>`).join("")}</div>
+   </div>
+   <div class="nav">
+    <button class="btn ghost" data-act="p1prev" ${i===0?"disabled":""}>上一題</button>
+    <div class="row">
+     ${a!==undefined?`<button class="btn ghost sm" data-act="p1clear">取消選擇</button>`:""}
+     <button class="btn" data-act="p1next">${i===14?"看結果":(a===undefined?"略過":"下一題")}</button>
+    </div>
+   </div>
+   <div class="row" style="margin-top:12px"><button class="btn ghost sm" data-go="scenes-result">先看暫時結果</button></div>
+  </section>`;
+}
+function p1Stats(){
+  const c=[0,0,0,0,0];Object.values(D.p1.ans).forEach(v=>c[v]++);
+  const n=Object.keys(D.p1.ans).length, mx=Math.max(...c);
+  const tops=n?c.map((v,k)=>v===mx?k:-1).filter(k=>k>=0):[];
+  return {c,n,tops};
+}
+function p1Title({n,tops}){
+  if(!n)return "先留下你的第一個選擇";
+  if(tops.length===5)return "這次，你平均選用了五種回應";
+  if(tops.length===1)return `這次，你較常從「${CATS[tops[0]].name}」開始`;
+  return `這次，你並列重視${tops.map(k=>"「"+CATS[k].name+"」").join("、")}`;
+}
+function p1Desc({n,tops}){
+  if(!n)return "我是正在認識自己介入方式的輔導老師。";
+  return "我是願意"+tops.map(k=>CATS[k].phrase).join("，也願意")+"的輔導老師。";
+}
+function innerSummary(){
+  const cnt=INNER.map(()=>0);Object.values(D.p1.inner).forEach(a=>(a||[]).forEach(k=>cnt[k]++));
+  const any=cnt.some(x=>x);
+  const combo=Object.keys(D.p1.ans).filter(i=>D.p1.ans[i]===2&&(D.p1.inner[i]||[]).some(k=>k===1||k===2)).map(i=>+i+1);
+  return {cnt,any,combo};
+}
+function rP1(){
+  const st=p1Stats(),{c,n,tops}=st,inn=innerSummary();
+  app.innerHTML=`<section class="card">
+   ${secHead("sun","我的介入傾向 · 此刻的自畫像",p1Title(st))}
+   <div class="big-sent">${p1Desc(st)}</div>
+   <p class="note">這份結果整理你在本活動中選過的回應，提供可討論的假設。它不是正式心理測驗，也不能據此判定能力、人格或學派。</p>
+   ${n?`<div class="box soft">${n<15?`這是依 ${n} 題形成的暫時回饋；尚有 ${15-n} 題未作答。`:"你已完成全部片段。不同情境可能帶出不同選擇，這份結果只是這一次的記錄。"}
+   ${tops.length>1?"<br>最高次數並列，這裡會保留並列結果；不因分數接近就推論你具有整合取向或更成熟。":""}</div>`:""}
+   ${n?`<div class="sec"><h3>回應光譜</h3>
+    ${CATS.map((k,j)=>`<div class="bar"><span><span class="dot" style="background:${k.hex}"></span>${k.name}</span><span class="t"><i style="width:${c[j]/n*100}%;background:${k.hex}"></i></span><span class="n">${c[j]} 次・${Math.round(c[j]/n*100)}%</span></div>`).join("")}
+    <p class="note">百分比＝該類回應的選擇次數 ÷ 已作答 ${n} 題。每題提供五類回應各一個；略過不計。這是本次選擇的分布，不是學派符合度。</p></div>
+   <div class="sec"><h3>五類回應的閱讀</h3>
+    ${CATS.map((k,j)=>`<details ${tops.includes(j)?"open":""}><summary><span class="dot" style="background:${k.hex}"></span>${k.name}（${c[j]} 次）</summary>
+     <div class="kv"><b>可能的優勢：</b>${k.strength}</div>
+     <div class="kv"><b>優勢用過頭的風險：</b>${k.risk}</div>
+     <div class="kv"><b>團督追問：</b>${k.ask}</div>
+     <div class="kv"><b>下一個小實驗：</b>${k.exp}</div>
+     <div class="kv"><b>理論／媒介映照：${k.th}。</b>${k.thd}</div></details>`).join("")}</div>`:""}
+   ${p1Deep()}
+   <div class="sec"><h3>回應背後的自己</h3>
+    <div class="box">${inn.any?`你勾選過：${INNER.map((f,k)=>inn.cnt[k]?`${f}（${inn.cnt[k]} 段）`:"").filter(Boolean).join("、")}。這是你的自我描述，不代表這些感受一定促成某種介入。`:"你尚未記錄內在反應。下次可以挑一段特別猶豫的情境，留意身體、情緒與當時的自我期待。"}</div>
+    ${inn.combo.length?`<div class="box soft">在第 ${inn.combo.join("、")} 段，你同時選了結構與行動，以及想幫上忙／擔心進展。可以討論：這個方法如何回應孩子的需要？又如何回應我當時的感受？</div>`:""}
+   </div>
+   ${n?bridgeHTML():""}
+   <div class="sec"><h3>這份分析，貼近你嗎？</h3>
+    <p class="note">你的修正比自動產生的描述更重要。可以補充「哪裡貼近、哪裡不貼近，以及具體例子」。</p>
+    <div class="chips">${["貼近我","部分貼近","不太貼近"].map((t,k)=>`<button class="chip ${D.p1.fit===k?"on":""}" data-radio="p1.fit" data-v="${k}">${t}</button>`).join("")}</div>
+    <label class="note">我想補充或修正的地方</label>
+    <textarea data-bind="p1.fitNote" placeholder="例如：我選擇提供方向，是因為這個情境中的孩子明確想要方法；其他時候我會先等待。">${esc(D.p1.fitNote)}</textarea>
+   </div>
+   <div class="row" style="margin-top:16px">
+    <button class="btn" data-act="copy1">複製分析文字</button>
+    <button class="btn" data-go="report">產出報告／給 AI 分析</button>
+    <button class="btn ghost" data-act="p1back">回去作答</button>
+    <button class="btn ghost" data-go="sketch">前往自我速寫</button>
+   </div>
+   <p class="disclaimer">選項與分類皆為本活動自編，未經心理計量驗證。沒有選到某類回應，不代表你缺少該能力。作答只存在這台裝置的瀏覽器，可在入口頁清除。</p>
+  </section>`;
+}
+function copy1(){
+  const st=p1Stats(),{c,n}=st,inn=innerSummary();
+  let t=`【情境札記｜我的介入傾向】\n${p1Title(st)}\n${p1Desc(st)}\n`;
+  if(n)t+=`\n回應光譜（已作答 ${n} 題）：\n`+CATS.map((k,j)=>`・${k.name} ${c[j]} 次（${Math.round(c[j]/n*100)}%）`).join("\n")+"\n";
+  if(n){const P=phaseInfo();t+=`\n隨會談階段：\n`+P.ph.map((p,i)=>`・${PHASES[i][0]}：${p.n?"以"+nmL(p.d)+"為主":"未作答"}`).join("\n")+"\n";
+    t+=`\n不同情境下：\n`+TYPES.map(ty=>{const r=countIn(ty[1]);return `・當${ty[0]}：${r.n?"較常選"+nmL(dom(r.c)):"未作答"}`;}).join("\n")+"\n";
+    const b=bridge();if(b&&(b.same.length||b.gap.length))t+=`\n與自我速寫對照：\n`+[...b.same.map(x=>"・呼應："+x),...b.gap.map(x=>"・落差："+x)].join("\n")+"\n";}
+  if(inn.any)t+=`\n內在反應：${INNER.map((f,k)=>inn.cnt[k]?`${f}（${inn.cnt[k]}）`:"").filter(Boolean).join("、")}\n`;
+  if(D.p1.fit!=null)t+=`\n貼近程度：${["貼近我","部分貼近","不太貼近"][D.p1.fit]}\n`;
+  if(D.p1.fitNote.trim())t+=`補充或修正：${D.p1.fitNote.trim()}\n`;
+  t+="\n這是自編團督活動的選擇分布，不是正式量表、學派判定或能力評量。";
+  return t;
+}
+
+/* ===== 深入分析（情境札記） ===== */
+const PHASES=[["初期・建立關係","第 1–4 題",[0,1,2,3]],["中期・工作與卡關","第 5–10 題",[4,5,6,7,8,9]],["後期・成人期待到結束","第 11–15 題",[10,11,12,13,14]]];
+const TYPES=[
+ ["孩子表達負向情緒或自我評價",[2,3,5,7,12],"孩子的情緒或自我否定出現時，我先照顧的是什麼？那是孩子當下最需要的嗎？"],
+ ["孩子要答案，或否定我的方法",[4,6],"被要求給答案或被說「沒用」時，我心裡的壓力是什麼？它如何影響我的回應？"],
+ ["關係中的試探與信任",[1,9,10,11],"孩子在試探「這裡安不安全」時，我的回應傳遞了什麼訊息？"],
+ ["開始、例外與結束",[0,8,13,14],"在關係的起點、亮點與終點，我想讓孩子帶走什麼經驗？"]
+];
+function countIn(idxs){const c=[0,0,0,0,0];let n=0;idxs.forEach(i=>{const v=D.p1.ans[i];if(v!==undefined){c[v]++;n++;}});return {c,n};}
+function dom(c){const mx=Math.max(...c);return mx?c.map((v,k)=>v===mx?k:-1).filter(k=>k>=0):[];}
+const nmL=ks=>ks.map(k=>"「"+CATS[k].name+"」").join("、");
+const miniBar=(c,n)=>`<div class="mini">${c.map((v,k)=>v?`<i style="width:${v/n*100}%;background:${CATS[k].hex}"></i>`:"").join("")}</div>`;
+function phaseInfo(){
+  const ph=PHASES.map(p=>{const r=countIn(p[2]);return {...r,d:dom(r.c)};});
+  const done=ph.filter(p=>p.n);let txt="";
+  if(done.length>=2){
+    const keys=done.map(p=>p.d.join(","));
+    if(new Set(keys).size===1)txt=`各階段都以${nmL(done[0].d)}為主。可以留意：當孩子的狀態與會談階段改變時，你的回應是否也保留了調整的空間？`;
+    else txt=`你的回應隨會談階段而移動：${ph.map((p,i)=>p.n?`${PHASES[i][0].split("・")[0]}多從${nmL(p.d)}`:"").filter(Boolean).join("，")}。可以討論：這個移動是回應小禾的變化，還是來自你對「這個階段該做什麼」的預設？`;
+  }
+  return {ph,txt};
+}
+function diversity(c,n){
+  const used=c.filter(v=>v).length, mx=Math.max(...c);
+  let t;
+  if(used<=2)t=`你在 ${n} 題中只用了 ${used} 類回應，選擇相當集中。集中可能代表清楚的工作信念，也可能是壓力下最熟悉的路；可以想想，換一個孩子或一個情境，你會不會走另一條路？`;
+  else if(used<=4)t=`你用了 ${used} 類回應，有主要的出發點，也會視情境轉換。值得留意的是：你轉換的線索，多半來自孩子，還是來自自己的感受？`;
+  else t=`五類回應你都用過。分布廣可能代表你會依情境調整，也可能是還在摸索；不因此推論你更整合或更成熟。可以挑一題說說：那一次，你是依據什麼做出選擇？`;
+  if(mx/n>=0.5)t+=` 其中「${CATS[c.indexOf(mx)].name}」占了一半以上，是你此刻很穩定的起點。`;
+  const none=c.map((v,k)=>v?-1:k).filter(k=>k>=0);
+  return {t,none};
+}
+function innerCross(){
+  const rows=[];
+  INNER.forEach((f,k)=>{const c=[0,0,0,0,0];let m=0;
+    Object.entries(D.p1.inner).forEach(([i,a])=>{if((a||[]).includes(k)){m++;const v=D.p1.ans[i];if(v!==undefined)c[v]++;}});
+    if(m)rows.push({f,k,m,c});});
+  return rows;
+}
+function pickSegments(){
+  const {c}=p1Stats(),out=[],seen=new Set();
+  const add=(i,why)=>{if(seen.has(i)||out.length>=3)return;seen.add(i);out.push([i,why]);};
+  Object.entries(D.p1.inner).forEach(([i,a])=>{i=+i;if((a||[]).includes(4))add(i,"你在這題勾選了「不確定／卡住」");});
+  Object.entries(D.p1.inner).forEach(([i,a])=>{i=+i;if((a||[]).includes(5))add(i,"你在這題注意到「身體有些緊繃」");});
+  Object.entries(D.p1.inner).forEach(([i,a])=>{i=+i;if((a||[]).includes(2)||(a||[]).includes(1))add(i,"你在這題感到想幫上忙或擔心進展");});
+  Object.entries(D.p1.ans).forEach(([i,v])=>{if(c[v]===1)add(+i,`這是你唯一一次選「${CATS[v].name}」，偏離了平常的起點`);});
+  SC.forEach((_,i)=>{if(D.p1.ans[i]===undefined)add(i,"你略過了這題；略過有時也是一種線索");});
+  return out;
+}
+// 情境札記 × 自我速寫 對照規則：[光譜, 端(0左1右), 回應類別]
+const LINKS=[[4,0,0],[7,0,0],[5,0,1],[9,0,1],[2,1,2],[0,1,2],[4,1,2],[5,1,3],[9,1,3]];
+function bridge(){
+  const {c,n,tops}=p1Stats();if(n<5||!Object.keys(D.p2.sp).length)return null;
+  const same=[],gap=[];
+  LINKS.forEach(([s,side,cat])=>{const d=spSide(s);if(d==null||d==="m")return;const S=SP[s],pct=Math.round(c[cat]/n*100);
+    if(d===side){
+      if(pct>=27)same.push(`光譜上「${S[0]}」靠近「${S[2+side]}」，情境札記中也有 ${pct}% 選擇「${CATS[cat].name}」。`);
+      else if(pct<=13)gap.push(`光譜上「${S[0]}」靠近「${S[2+side]}」，但情境札記中只有 ${pct}% 選擇「${CATS[cat].name}」。`);
+    }else if(tops.includes(cat)&&tops.length<3){
+      gap.push(`情境札記中你最常選「${CATS[cat].name}」，但光譜上「${S[0]}」靠近另一端「${S[2+d]}」。`);
+    }});
+  const fr=(D.p2.fr||[]).includes(2);
+  if(fr&&c[4]/n>=0.2)same.push(`孩子沉默時你會提供遊戲、畫畫或沙盤，情境札記中也有 ${Math.round(c[4]/n*100)}% 選擇「象徵與媒介」。`);
+  if(fr&&c[4]===0)gap.push(`孩子沉默時你會提供遊戲、畫畫或沙盤，但情境札記中沒有選過「象徵與媒介」。`);
+  return {same,gap};
+}
+function bridgeHTML(){
+  const b=bridge();
+  if(!b)return `<div class="sec"><h3>說的與選的：兩部分對照</h3><p class="note">情境札記至少作答 5 題、自我速寫至少定位 1 條光譜後，這裡會比對兩者的呼應與落差。</p></div>`;
+  return `<div class="sec"><h3>說的與選的：兩部分對照</h3>
+   <p class="note">自我速寫是「我覺得自己會站的位置」，情境札記是「面對具體片段時的選擇」。兩者不同很常見，不代表哪一個比較真實。</p>
+   ${b.same.length?`<div class="box"><b style="font-size:13px;color:var(--teal)">相互呼應</b>${ul(b.same)}</div>`:""}
+   ${b.gap.length?`<div class="box soft"><b style="font-size:13px;color:var(--teal)">值得對話的落差</b>${ul(b.gap)}<div class="kv" style="margin-top:6px"><b>可能的理解：</b>理想與慣性之間的距離、不同孩子帶出的不同選擇，或小禾這個情境的特殊性。<br><b>帶進團督：</b>挑一個落差，回想一次真實晤談：那時你更接近哪一個自己？是什麼讓你那樣選？</div></div>`:""}
+   ${!b.same.length&&!b.gap.length?`<div class="box">目前兩部分沒有明顯的呼應或落差。可以多定位幾條光譜，或完成更多情境題，再回來看看。</div>`:""}
+  </div>`;
+}
+function p1Deep(){
+  const {c,n}=p1Stats();if(!n)return "";
+  const P=phaseInfo(),V=diversity(c,n),IC=innerCross(),SG=pickSegments();
+  return `
+  <div class="sec"><h3>作答軌跡</h3>
+   <div class="traj">${SC.map((_,i)=>{const v=D.p1.ans[i];return `<span class="td" style="${v!==undefined?"background:"+CATS[v].hex:""}" title="第${i+1}題">${i+1}</span>`;}).join("")}</div>
+   <div class="legend">${CATS.map(k=>`<span><span class="dot" style="background:${k.hex}"></span>${k.name}</span>`).join("")}<span><span class="dot" style="background:#cfc6b6"></span>略過</span></div>
+  </div>
+  <div class="sec"><h3>隨會談階段的變化</h3>
+   <div class="phase">${P.ph.map((p,i)=>`<div class="box"><b>${PHASES[i][0]}</b> <span class="note">${PHASES[i][1]}</span>
+     ${p.n?`${miniBar(p.c,p.n)}<div class="note">以${nmL(p.d)}為主（已作答 ${p.n} 題）</div>`:`<div class="note">這一段尚未作答。</div>`}</div>`).join("")}</div>
+   ${P.txt?`<p class="kv" style="margin-top:8px">${P.txt}</p>`:""}
+  </div>
+  <div class="sec"><h3>不同情境下的你</h3>
+   ${TYPES.map(t=>{const r=countIn(t[1]);return `<div class="box"><b>當${t[0]}</b> <span class="note">第 ${t[1].map(i=>i+1).join("、")} 題</span>
+     ${r.n?`${miniBar(r.c,r.n)}<div class="kv">你較常選${nmL(dom(r.c))}。</div><div class="note">團督追問：${t[2]}</div>`:`<div class="note">這類情境尚未作答。</div>`}</div>`;}).join("")}
+  </div>
+  <div class="sec"><h3>回應的廣度</h3>
+   <p class="kv">${V.t}</p>
+   ${V.none.length?`<div class="box">這次沒有選到：${nmL(V.none)}。沒有選到不代表缺少這項能力；可以想想，什麼樣的孩子或時刻，可能需要你多走一步到這裡？</div>`:""}
+  </div>
+  ${IC.length?`<div class="sec"><h3>感受與回應的連動</h3>
+   <table class="x"><tr><th>勾選的內在反應</th><th>同時選擇的回應</th></tr>
+   ${IC.map(r=>`<tr><td>${r.f}<div class="note">${r.m} 段</div></td><td>${r.c.map((v,k)=>v?`<span class="tagc" style="background:${CATS[k].hex}">${CATS[k].name} ${v}</span>`:"").join("")||'<span class="note">該題略過</span>'}</td></tr>`).join("")}</table>
+   <p class="note">這是你的自我描述與選擇並列呈現，不代表感受一定促成某種介入。可以討論：某種感受出現時，我是否總走向同一種回應？</p></div>`:""}
+  ${SG.length?`<div class="sec"><h3>建議帶進團督的片段</h3>
+   ${SG.map(([i,why])=>{const s=SC[i],v=D.p1.ans[i];return `<div class="box"><b>第 ${i+1} 題｜${s[0]}</b><div class="kv">小禾：「${s[2]}」</div>
+     ${v!==undefined?`<div class="kv"><span class="tagc" style="background:${CATS[v].hex}">${CATS[v].name}</span>${s[3][v]}</div>`:""}
+     <div class="note">為什麼是這段：${why}。</div></div>`;}).join("")}
+   <p class="note">同儕可以協助：先說說當時孩子給了什麼線索，再一起想第二種回應。</p></div>`:""}`;
+}
+
+/* ================= PART 2 ================= */
+function chipList(path,opts,col){const a=getP(path)||[];return `<div class="chips ${col?"col":""}">${opts.map((o,k)=>`<button class="chip ${a.includes(k)?"on":""}" data-chip="${path}" data-v="${k}">${o}</button>`).join("")}</div>`;}
+
+function thPicker(dark){
+  const th=D.p2.th||{};
+  return TH_GROUPS.map((g,gi)=>`<h3 class="grouph">${g}</h3>`+THEORY.map((t,i)=>t[3]!==gi?"":`
+   <div class="thc ${th[i]!=null?"set":""}">
+    <div class="thn">${t[0]}</div>
+    <div class="thd">${t[1]}</div>
+    <div class="tha">問問自己：${t[2]}</div>
+    <div class="chips thlv ${dark?"pjchips":""}" role="group" aria-label="${t[0]}">${TH_LV.map((l,k)=>`<button class="chip ${th[i]===k?"on":""}" data-radio="p2.th.${i}" data-v="${k}">${l}</button>`).join("")}</div>
+   </div>`).join("")).join("");
+}
+function thLists(){const th=D.p2.th||{};return TH_LV.map((_,k)=>THEORY.map((t,i)=>th[i]===k?i:-1).filter(i=>i>=0));}
+function thBridge(){
+  const st=p1Stats(),th=D.p2.th||{};if(st.n<5||!Object.keys(th).some(k=>th[k]!=null))return null;
+  const same=[],gap=[];
+  st.tops.forEach(c=>{const ts=CAT_TH[c],used=ts.filter(i=>th[i]===0||th[i]===1);
+    if(used.length)same.push(`情境札記中你常選「${CATS[c].name}」，你也標示會借用${used.map(i=>"「"+THEORY[i][0]+"」").join("、")}。`);
+    else if(ts.some(i=>th[i]===2||th[i]===3))gap.push(`情境札記中你常選「${CATS[c].name}」，這和${ts.map(i=>"「"+THEORY[i][0]+"」").join("、")}的視角有所呼應，但你標示還不熟或想多認識。你可能已在實踐，只是還沒替它命名，也可能用的是另一種理解。`);
+  });
+  CAT_TH.forEach((ts,c)=>{if(st.c[c]===0){const often=ts.filter(i=>th[i]===0);if(often.length)gap.push(`你標示常借用${often.map(i=>"「"+THEORY[i][0]+"」").join("、")}，但這次情境札記沒有選到「${CATS[c].name}」。可以討論：小禾的情境沒有喚起這個視角，還是平常的你和這次的選擇不太一樣？`);}});
+  return {same,gap};
+}
+function thSection(){
+  const L=thLists(),any=L.some(a=>a.length),B=thBridge();
+  if(!any&&!(D.p2.thOther||"").trim())return `<div class="sec"><h3>我的取向映照</h3><p class="note">在自我速寫「04 取向映照」替各個視角選位置後，這裡會整理你常借用與想多認識的視角。</p></div>`;
+  const nm=a=>a.map(i=>THEORY[i][0]).join("、");
+  return `<div class="sec"><h3>我的取向映照</h3>
+   ${L[0].length?`<div class="kv"><b>常借用：</b>${nm(L[0])}</div>`:""}
+   ${L[1].length?`<div class="kv"><b>偶爾借用：</b>${nm(L[1])}</div>`:""}
+   ${(D.p2.thOther||"").trim()?`<div class="kv"><b>其他常借用：</b>${esc(D.p2.thOther.trim())}</div>`:""}
+   ${L[2].length?`<div class="kv"><b>想多認識：</b>${nm(L[2])}</div><div class="note">可以在團督中請熟悉這些視角的夥伴，分享一段實際運用的晤談片段。</div>`:""}
+   ${L[0].length+L[1].length>=6?`<div class="box">你標示借用的視角相當多元。可以挑一位最近的孩子說說：你當時是依據什麼線索，決定借用哪一個？`:""}${L[0].length+L[1].length>=6?"</div>":""}
+   ${L[0].length===1&&!L[1].length?`<div class="box">你目前主要借用「${THEORY[L[0][0]][0]}」。一個清楚的視角能讓工作穩定；也可以想想，什麼樣的孩子可能需要另一種理解？</div>`:""}
+   ${(D.p2.thNote||"").trim()?`<div class="box"><b style="font-size:13px;color:var(--mute)">最近一次借用的片段</b><br>${esc(D.p2.thNote.trim())}</div>`:""}
+   ${B&&(B.same.length||B.gap.length)?`<div class="box soft"><b style="color:var(--accent)">和情境札記對照</b>${ul([...B.same,...B.gap])}</div>`:""}
+  </div>`;
+}
+function thText(){
+  const L=thLists(),nm=a=>a.length?a.map(i=>THEORY[i][0]).join("、"):"無";
+  let t=`常借用：${nm(L[0])}\n偶爾借用：${nm(L[1])}\n想多認識：${nm(L[2])}\n還不熟悉：${nm(L[3])}`;
+  if((D.p2.thOther||"").trim())t+=`\n其他常借用：${D.p2.thOther.trim()}`;
+  if((D.p2.thNote||"").trim())t+=`\n最近一次借用的片段：${D.p2.thNote.trim()}`;
+  return t;
+}
+function spLabel(i){const v=D.p2.sp[i],s=SP[i];if(v==null)return "尚未定位";if(v<40)return `靠近「${s[2]}」・${v}`;if(v>60)return `靠近「${s[3]}」・${v}`;return `兩端之間・${v}`;}
+function rSketch(){
+  app.innerHTML=`
+  <nav class="steps-nav" aria-label="自我速寫段落"><button data-act="jump" data-to="s-fr"><b>01</b>第一反應</button><button data-act="jump" data-to="s-sp"><b>02</b>我的光譜</button><button data-act="jump" data-to="s-rf"><b>03</b>多看一層</button><button data-act="jump" data-to="s-th"><b>04</b>取向映照</button><button data-go="portrait"><b>05</b>帶走一點</button></nav>
+  <section class="card" id="s-fr">
+   ${secHead("stones","01 停一下","孩子沉默了，你會怎麼做？")}
+   <p class="lead">想像孩子坐在面前五分鐘沒有說話。先選最貼近自己的反應，可複選，也可以不選。沒有標準答案。</p>
+   <h4 style="font-family:'Noto Sans TC';font-size:15px">我最可能採取的行動是……</h4>
+   ${chipList("p2.fr",FR,true)}
+   <label class="note">其他反應或補充（選填）</label>
+   <textarea data-bind="p2.frNote" placeholder="例如：我想拿出桌遊，也發現自己的肩膀有點緊。">${esc(D.p2.frNote)}</textarea>
+  </section>
+  <section class="card" id="s-sp">
+   ${secHead("rings","02 留意","找到此刻的自己")}
+   <p class="lead">先標記「我自然會站的位置」，而不是「我覺得應該站的位置」。以最近的輔導經驗為例，從三組主題中挑選想探索的軸，不必全部填完。兩端代表此刻較常優先採用的方式，可以並存，也不是好壞或能力評分。</p>
+   ${GROUPS.map((g,gi)=>`<h3 class="grouph">${g}</h3>`+SP.map((s,i)=>s[1]!==gi?"":`
+    <div class="sp ${D.p2.sp[i]==null?"unset":""}" id="sp${i}">
+     <div class="hd"><span>${i+1}. ${s[0]}</span><span class="st" id="spl${i}">${spLabel(i)}</span></div>
+     <div class="q">${s[4]}</div>
+     <div class="ends"><span>${s[2]}</span><span>${s[3]}</span></div>
+     <input type="range" min="0" max="100" step="1" value="${D.p2.sp[i]==null?50:D.p2.sp[i]}" data-sp="${i}" aria-label="${s[0]}：${s[2]}到${s[3]}">
+     <div class="row"><button class="btn ghost sm" data-act="spmid" data-i="${i}">確認居中</button><button class="btn ghost sm" data-act="spclr" data-i="${i}">清除</button></div>
+    </div>`).join("")).join("")}
+  </section>
+  <section class="card" id="s-rf">
+   ${secHead("sprout","03 多看一層","6 題深入反思")}
+   <p class="lead">每題皆可複選、取消、略過。</p>
+   ${RF.map((r,i)=>`<div style="margin-bottom:18px"><h4 style="font-family:'Noto Sans TC';font-size:15.5px">${i+1}. ${r[0]}</h4>
+    ${chipList("p2.refl."+i,r[1],true)}
+    <textarea data-bind="p2.reflNote.${i}" placeholder="其他或補充：${r[2]}">${esc(D.p2.reflNote[i]||"")}</textarea></div>`).join("")}
+  </section>
+  <section class="card" id="s-th">
+   ${secHead("frame","04 取向映照","我會借用哪些視角？")}
+   <p class="lead">這些是簡化的理解視角，不是學派認證或能力評量。媒介、理論與工作框架也不是同一層次；一位老師可以同時借用多個視角。依你的實際工作，替每個視角選一個位置，不熟的也可以跳過。</p>
+   ${thPicker(false)}
+   <label class="note" for="thOther">其他我常借用的取向（選填）</label>
+   <input type="text" id="thOther" data-bind="p2.thOther" value="${esc(D.p2.thOther||"")}" placeholder="例如：情緒焦點、存在主義、正向心理學……">
+   <label class="note" for="thNote" style="display:block;margin-top:10px">最近一次借用某個視角的片段（選填）</label>
+   <textarea id="thNote" data-bind="p2.thNote" placeholder="例如：孩子一直說自己很爛，我試著問「這個『很爛』是什麼時候開始跟著你的？」，那是敘事的外化提問。">${esc(D.p2.thNote||"")}</textarea>
+  </section>
+  <div class="row"><button class="btn" data-go="portrait">產生我的自畫像</button><button class="btn ghost" data-go="project-sketch">改用沉浸模式作答</button><button class="btn ghost" data-go="scenes">去情境札記</button></div>`;
+}
+function spSide(i){const v=D.p2.sp[i];return v==null?null:v<40?0:v>60?1:"m";}
+function located(){return Object.keys(D.p2.sp).map(Number).sort((a,b)=>a-b);}
+function autoDesc(){
+  const L=located();if(!L.length)return null;
+  const top=[...L].sort((a,b)=>Math.abs(D.p2.sp[b]-50)-Math.abs(D.p2.sp[a]-50)).slice(0,2);
+  return top.map(i=>{const s=SP[i],d=spSide(i);return d==="m"?`在「${s[2]}」與「${s[3]}」間調整`:s[5][d];}).join("，也");
+}
+function portraitSentence(){const nm=(D.p2.name||"").trim();const a=nm||autoDesc();return a?`我是${a}的輔導老師`:"我是正在認識自己的輔導老師";}
+function sel(path,opts){return (getP(path)||[]).map(k=>opts[k]);}
+function cross(){
+  const has=(q,t)=>sel("p2.refl."+q,RF[q][1]).includes(t);
+  const fr=t=>sel("p2.fr",FR).includes(t);
+  const L=(i,d)=>spSide(i)===d;
+  const out=[];
+  if(L(0,0)&&has(2,"提供建議或教一個技巧"))out.push(["跟隨的信念，與給方法的慣性","你在帶領方式靠近「跟隨」，也勾選不知道怎麼辦時會「提供建議或教一個技巧」。","兩者可以在不同情境共存。值得探索的是：從跟隨轉向帶領之前，發生了什麼？","回想一段轉換的時刻，分別記下孩子的訊號、自己的感受，以及給方法後的反應。"]);
+  if(L(4,0)&&has(0,"談了很久，卻看不見明顯改變"))out.push(["重視關係，也期待看見改變","你在工作重心靠近「關係」，也勾選看不見明顯改變會讓你焦慮。","你可能同時在意連結與成效；焦慮並不表示關係工作無效。","和同儕討論：我用什麼判斷進展？孩子認為的進展，是否和我一樣？"]);
+  if(has(1,"我擔心自己沒有發揮作用")&&(has(2,"提供建議或教一個技巧")||has(1,"我看見孩子很痛苦，想趕快幫上忙")))out.push(["助人的責任感，與自己的有效感","你勾選擔心自己沒有發揮作用時想給建議，也勾選提供方法或想趕快幫忙。","方法可能同時回應孩子的需要，以及你希望幫上忙的感受。這是可檢查的假設，不是動機判定。","給建議前停一下：孩子明確表達了什麼需要？如果先不給方法，我最擔心什麼？"]);
+  if(L(2,1)&&has(3,"我重視讓孩子保有自主與選擇"))out.push(["清楚的結構，與孩子的自主","你在安排方式靠近「結構」，也勾選重視孩子保有自主與選擇。","兩者可以互相支持。可觀察結構裡哪些部分由成人決定，哪些能由孩子協商。","下一次保留一個可由孩子改變的環節，再詢問這樣的安排是否適合他。"]);
+  if(L(8,1)&&(fr("提供遊戲、畫畫或沙盤的選擇")||has(2,"轉換媒介，例如畫畫或遊戲")))out.push(["習慣對話，也願意轉換媒介","你在表達節奏靠近「對話」，也選擇使用遊戲、繪畫或沙盤等媒介。","你可能有不只一條靠近孩子的路。仍需確認轉換是回應孩子、你的不確定，或兩者都有。","回看一次轉換媒介的經驗：孩子是否有選擇？轉換後的表達有何不同？"]);
+  if(has(5,"主要來自家長、導師或學校的期待"))out.push(["孩子的目標，與系統的期待","你勾選對孩子需要的理解，部分來自家長、導師或學校的期待。","外在資訊可以幫助理解情境，但不一定等同孩子認為的需要。","用三欄整理：孩子想改變的、成人期待的、目前仍需確認的；找出可共同協商的一小步。"]);
+  if(L(1,0)&&has(4,"焦慮，擔心自己幫不上忙"))out.push(["願意等待，也注意到自己的焦慮","你在介入時機靠近「等待」，也勾選焦慮、擔心自己幫不上忙。","外在的等待與內在的焦慮可以同時存在；這不表示你在假裝平靜。","觀察等待時的身體訊號，區分孩子正在需要的時間，以及自己需要的支持。"]);
+  if(L(3,1)&&has(3,"我重視讓孩子保有自主與選擇"))out.push(["運用專業，也守護孩子的自主","你在角色位置靠近「專家」，也勾選重視孩子的自主與選擇。","提供專業與邀請孩子修正可以並行；值得看的是如何讓建議保持可協商。","分享一個專業觀察後，請孩子指出哪裡貼近、哪裡不貼近，並保留不採用的空間。"]);
+  if(L(10,0)&&has(5,"主要來自家長、導師或學校的期待"))out.push(["深入個人，同時承接外在期待","你在工作範圍靠近「個人內在」，也勾選需要的理解來自家長、導師或學校。","可以再核對：哪些困難適合與孩子工作，哪些條件需要成人或環境一起調整。","找一段具體互動，分開寫下孩子可選擇的行動，以及成人或環境需要承擔的部分。"]);
+  return out;
+}
+function summaryLists(){
+  const L=located(),my=[],res=[],risk=[],next=[];
+  L.forEach(i=>{const s=SP[i],d=spSide(i);
+    if(d==="m"){my.push(`${s[0]}：目前介於兩端，或依情境調整`);res.push(`可能能在「${s[2]}／${s[3]}」之間保留選擇。`);risk.push("居中不一定表示靈活；可用具體晤談確認選擇的依據。");next.push(`回想一次偏向「${s[2]}」與一次偏向「${s[3]}」的經驗，辨識孩子給你的線索。`);}
+    else{my.push(`${s[0]}：目前較靠近「${s[2+d]}」`);res.push(s[5][d]);risk.push(s[6][d]);next.push(s[7][d]);}
+  });
+  return {L,my,res:[...new Set(res)],risk:[...new Set(risk)],next:[...new Set(next)]};
+}
+function spOverview(){
+  if(!located().length)return "";
+  return `<div class="sec"><h3>光譜全貌</h3>
+   ${GROUPS.map((g,gi)=>`<div class="note" style="margin:10px 0 2px;font-weight:700;color:var(--teal)">${g}</div>`+SP.map((s,i)=>{if(s[1]!==gi)return "";const v=D.p2.sp[i];
+     return `<div class="ovr ${v==null?"un":""}"><span class="nm">${s[0]}</span><div><div class="ovt">${v!=null?`<span class="m" style="left:${v}%"></span>`:""}</div><div class="ovl"><span>${s[2]}</span><span>${v==null?"尚未定位":""}</span><span>${s[3]}</span></div></div></div>`;}).join("")).join("")}
+   <p class="note">中線為兩端之間；虛線表示尚未定位。位置不是分數。</p></div>`;
+}
+const GTXT=[["較常跟隨孩子的步調，把節奏的決定權留給孩子","較常由你提供方向、時機與安排"],["較先照顧關係、感受與接納","較先提供工具、解決方式與不同觀點"],["較常從留白、過往、內在經驗與直覺去理解","較常從對話、當下未來、環境系統與查證去理解"]];
+function groupReading(){
+  if(!located().length)return "";
+  return `<div class="sec"><h3>三組主題的閱讀</h3>${GROUPS.map((g,gi)=>{
+    const idx=SP.map((s,i)=>s[1]===gi?i:-1).filter(i=>i>=0&&D.p2.sp[i]!=null);
+    if(!idx.length)return `<div class="box"><b>${g}</b><div class="note">這一組尚未定位。</div></div>`;
+    const Lf=idx.filter(i=>spSide(i)===0),Rt=idx.filter(i=>spSide(i)===1),M=idx.filter(i=>spSide(i)==="m");
+    const parts=[];
+    if(Lf.length)parts.push(`靠近左端：${Lf.map(i=>"「"+SP[i][2]+"」").join("、")}`);
+    if(Rt.length)parts.push(`靠近右端：${Rt.map(i=>"「"+SP[i][3]+"」").join("、")}`);
+    if(M.length)parts.push(`兩端之間：${M.map(i=>SP[i][0]).join("、")}`);
+    let t;
+    if(Lf.length>Rt.length)t=`這一組你多站在左端，此刻可能${GTXT[gi][0]}。`;
+    else if(Rt.length>Lf.length)t=`這一組你多站在右端，此刻可能${GTXT[gi][1]}。`;
+    else if(Lf.length)t="這一組左右兩端都有，可能依情境調整；可以用一次具體晤談確認你轉換的依據。";
+    else t="這一組你都放在兩端之間。居中不一定表示靈活；需要具體例子才能分辨。";
+    return `<div class="box"><b>${g}</b> <span class="note">已定位 ${idx.length} / 4 條</span><div class="kv">${parts.join("；")}。</div><div class="kv">${t}</div><div class="note">團督追問：這一組的位置，是孩子需要的，還是我比較自在的？</div></div>`;
+  }).join("")}</div>`;
+}
+function reflExcerpt(){
+  const out=[];
+  const fr=sel("p2.fr",FR);if(fr.length||D.p2.frNote.trim())out.push(["孩子沉默時，我最可能",fr,D.p2.frNote]);
+  RF.forEach((r,i)=>{const s=sel("p2.refl."+i,r[1]),nt=D.p2.reflNote[i]||"";if(s.length||nt.trim())out.push([r[0],s,nt]);});
+  return out;
+}
+const ul=a=>a.length?`<ul>${a.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:"";
+function clue(q){const s=sel("p2.refl."+q,RF[q][1]),nt=(D.p2.reflNote[q]||"").trim();if(!s.length&&!nt)return null;return ul(s)+(nt?`<div class="kv">補充：${esc(nt)}</div>`:"");}
+function rPortrait(){
+  const S=summaryLists(),X=cross(),R=reflExcerpt();
+  const ph=(a,empty)=>a.length?ul(a):`<p class="note">${empty}</p>`;
+  const clues=[["我重視與想守護的事",3,"哪些是你想持續實踐的價值？哪些期待有時讓你很難允許自己不知道？"],["情緒與身體給我的訊號",4,"挑一個訊號：它通常在什麼時刻出現？它出現後，你會更靠近、加快介入，還是退開？"],["容易讓我卡住的情境",0,"焦慮發生前，對方做了什麼？你當時如何解讀？有哪些其他可能的理解？"],["不確定時，我如何應對",2,"這個習慣在什麼情境幫過你？在哪一次沒有幫上忙？你怎麼從孩子的回應知道？"],["我如何知道孩子的需要",5,"哪些是孩子明確說的、哪些是你的推測、哪些來自成人？下一次可以如何核對？"]];
+  app.innerHTML=`<section class="card">
+   ${secHead("frame","05 帶走一點","帶走一幅此刻的自畫像")}
+   <p class="note">依你已確認的光譜產生討論草稿；選擇與補充會整理成反思摘錄；優勢與風險仍依已確認的光譜產生，不用選項判定人格或學派。</p>
+   <div class="big-sent" id="psent">${esc(portraitSentence())}</div>
+   <div class="row" style="margin:-4px 0 14px"><button class="btn" data-act="pdf">下載這幅自畫像（PDF）</button><span class="note">A4 版面，可存成 PDF；瀏覽器不支援時會改成圖片，長按即可儲存</span></div>
+   <label class="note">用你自己的話命名（選填）</label>
+   <input type="text" data-bind="p2.name" value="${esc(D.p2.name)}" placeholder="例如：願意等待，也正在練習帶領">
+   <div class="sec"><h3>我的光譜</h3>${ph(S.my,"尚未定位；先移動光譜或確認居中。")}</div>
+   ${spOverview()}
+   ${groupReading()}
+   <div class="sec"><h3>我的優勢｜可能的資源</h3>${ph(S.res,"完成定位後，這裡會呈現可討論的優勢。")}</div>
+   <div class="sec"><h3>優勢用過頭的風險</h3>${ph(S.risk,"還沒有足夠的自我定位資料。")}</div>
+   <div class="sec"><h3>下一個可嘗試的介入</h3>${ph(S.next,"先留意一次晤談中自己的第一反應。")}</div>
+   <div class="sec"><h3>我的反思摘錄</h3>${R.length?R.map(r=>`<div class="box"><b style="font-size:13px;color:var(--mute)">${r[0]}</b>${ul(r[1])}${r[2].trim()?`<div class="kv">補充：${esc(r[2].trim())}</div>`:""}</div>`).join(""):`<p class="note">尚未有勾選或補充。</p>`}</div>
+   ${thSection()}
+   <div class="sec"><h3>我想帶走的小實驗（選填）</h3>
+    ${chipList("p2.exps",EXPS,true)}
+    <textarea data-bind="p2.expNote" placeholder="下一次晤談，我想在什麼時刻試做一個小改變？如何觀察孩子的反應？">${esc(D.p2.expNote)}</textarea></div>
+   <div class="sec"><h3>讀完分析，我想補充或修正……（選填）</h3>
+    <textarea data-bind="p2.fix" placeholder="哪一段貼近我？哪一段不貼近？可以用一次具體互動修正它。">${esc(D.p2.fix)}</textarea></div>
+   <div class="row" style="margin-top:16px"><button class="btn" data-act="pdf">下載 PDF</button><button class="btn ghost" data-act="copy2">複製自畫像摘要</button><button class="btn ghost" data-go="report">產出報告／給 AI 分析</button><button class="btn ghost" data-go="sketch">回去調整</button></div>
+   <p class="disclaimer">這是自我反思草稿，不是心理測驗、學派分類或能力評量。</p>
+  </section>
+  <section class="card">
+   ${secHead("stones","深入閱讀","我的自我定位・深入閱讀")}
+   <p class="note">點開感興趣的段落。每一段都附上依據，供你確認、修正或帶進團督。</p>
+   <div class="box soft">你已確認 ${S.L.length} / 12 條光譜。以下依你的自我定位與勾選整理；未填答不視為居中。光譜的左端、右端與中間都不是能力高低。</div>
+   ${S.L.map(i=>{const s=SP[i],d=spSide(i),v=D.p2.sp[i];const pos=d==="m"?"兩端之間":s[2+d];
+     const body=d==="m"?`<p class="kv">你把自己放在兩端之間。這可能表示依情境調整，也可能是還在辨識自己的習慣；需要具體例子才能分辨。</p>
+       <div class="kv"><b>可能的資源：</b>保留兩端的工作可能，但不直接推論已能靈活切換。</div><div class="kv"><b>用過頭時：</b>若停在抽象的「都可以」，可能難以說清楚當下為何做出選擇。</div><div class="kv"><b>團督追問：</b>${s[4]}</div><div class="kv"><b>下一步：</b>各回想一次偏向兩端的晤談，辨識你看到的孩子訊號。</div>`
+      :`<p class="kv">你把自己放在較靠近「${s[2+d]}」的位置，可能比較重視${s[5][d]}。</p>
+       <div class="kv"><b>可能的資源：</b>${s[5][d]}</div><div class="kv"><b>用過頭時：</b>${s[6][d]}</div><div class="kv"><b>團督追問：</b>${s[4]}</div><div class="kv"><b>下一步：</b>${s[7][d]}</div>`;
+     return `<details><summary>${s[0]}｜${pos}</summary><p class="note">依據：你在「${s[2]}↔${s[3]}」確認的位置為 ${v} / 100（僅表示位置，非測驗分數）。</p>${body}</details>`;}).join("")}
+   <div class="sec"><h3>答案之間的對話</h3>
+    ${X.length?X.map(x=>`<details><summary>${x[0]}</summary><div class="kv"><b>依據：</b>${x[1]}</div><div class="kv"><b>可能的理解：</b>${x[2]}</div><div class="kv"><b>帶進團督：</b>${x[3]}</div></details>`).join("")
+     :`<div class="box">目前沒有觸發預設的交叉提問，這不表示你的答案完全一致或沒有值得探索的地方。可以選一個「理想上會這樣做，實際卻不一定」的片段，和同儕一起回看。</div>`}
+   </div>
+   ${bridgeHTML()}
+   ${clues.map(c=>{const h=clue(c[1]);return h?`<div class="sec"><h3>${c[0]}</h3><div class="box"><b style="font-size:13px;color:var(--mute)">你提供的線索：</b>${h}</div><div class="kv"><b>可繼續探索：</b>${c[2]}</div></div>`:"";}).join("")}
+   <div class="sec"><h3>把分析帶回一段真實互動</h3>
+    <p class="kv">挑一個最近的晤談片段，依序說明：</p>
+    <ol class="steps"><li>孩子當時說了或做了什麼？</li><li>我注意到哪些想法、情緒與身體訊號？</li><li>我選擇了什麼回應？希望它產生什麼作用？</li><li>孩子接下來怎麼反應？</li><li>如果多一種選擇，我願意試什麼？</li></ol>
+    <p class="note">同儕先協助區分觀察與推測，再一起找下一步。</p>
+   </div>
+  </section>`;
+}
+function copy2(){
+  const S=summaryLists(),R=reflExcerpt();
+  const li=a=>a.map(x=>"・"+x).join("\n");
+  let t=`【自我速寫｜此刻的自畫像】\n${portraitSentence()}\n`;
+  t+=`\n我的光譜：\n${S.my.length?li(S.my):"尚未定位"}\n`;
+  if(S.res.length)t+=`\n我的優勢｜可能的資源：\n${li(S.res)}\n\n優勢用過頭的風險：\n${li(S.risk)}\n\n下一個可嘗試的介入：\n${li(S.next)}\n`;
+  if(R.length)t+=`\n我的反思摘錄：\n`+R.map(r=>`${r[0]}\n${li(r[1])}${r[2].trim()?"\n補充："+r[2].trim():""}`).join("\n")+"\n";
+  if(thLists().some(x=>x.length)||(D.p2.thOther||"").trim())t+=`\n取向映照：\n${thText()}\n`;
+  const ex=sel("p2.exps",EXPS);if(ex.length||D.p2.expNote.trim())t+=`\n我想帶走的小實驗：\n${li(ex)}${D.p2.expNote.trim()?"\n"+D.p2.expNote.trim():""}\n`;
+  if(D.p2.fix.trim())t+=`\n補充或修正：${D.p2.fix.trim()}\n`;
+  t+="\n這是自我反思草稿，不是心理測驗、學派分類或能力評量。";
+  return t;
+}
+
+/* ================= PART 3：校園站位 ================= */
+const CATS3=[
+ {name:"釐清界線",hex:"#4f6d8a",phrase:"把專業位置說清楚",
+  strength:"你能把專業位置說清楚，保護輔導工作的時間、保密與倫理。",
+  risk:"若只停在說明界線，對方可能感覺被拒絕，合作的門反而關上。",
+  ask:"我說明界線時，對方聽到的是「我不幫」，還是「我們這樣做比較好」？",
+  exp:"下次劃界線時，在同一段話裡加上一件你可以做的事。"},
+ {name:"協作分工",hex:"#6f8f5a",phrase:"找到一起做的方式",
+  strength:"你常從共同目標出發，把大人們拉到同一邊，談出彼此可以做的部分。",
+  risk:"若每件事都協商，可能耗掉大量時間，也可能在協商中讓出不該讓的專業判斷。",
+  ask:"這次協商裡，哪些是可以讓的，哪些是我必須守住的？",
+  exp:"協商前，先寫下一條自己不讓步的底線。"},
+ {name:"承接補位",hex:"#c07a5a",phrase:"先接住身邊的大人",
+  strength:"你願意先接住身邊大人的壓力與情緒，在緊急時刻補上空缺，讓孩子不落空。",
+  risk:"長期補位可能讓系統習慣把事情交給你，也讓自己耗竭；有些補位也可能模糊專業角色。",
+  ask:"我先接下來，是因為孩子需要，還是因為不好意思拒絕？",
+  exp:"下次想先答應前，給自己一句緩衝：「我確認一下時間再回覆你。」"},
+ {name:"系統倡議",hex:"#b08a3e",phrase:"讓制度一起改變",
+  strength:"你會把個別事件看成制度的訊號，透過會議、流程與資料，讓學校的運作慢慢改變。",
+  risk:"制度改變需要時間，眼前的人和事可能等不及；過程中也可能被看成「在找麻煩」。",
+  ask:"這件事需要的是馬上回應，還是制度調整？還是兩者都要？",
+  exp:"挑一個最常重複發生的困擾，整理成一頁資料，帶到下一次輔導會議。"},
+ {name:"照顧與求援",hex:"#8a78a6",phrase:"照顧自己，也找人一起扛",
+  strength:"你會留意自己的負荷與感受，願意找督導、同儕與資源一起扛，不讓專業變成孤島。",
+  risk:"若停在覺察與求助，眼前的處境可能仍需要你表態或行動。",
+  ask:"找人討論之後，我下一個具體的行動是什麼？",
+  exp:"這週找一位同業聊一個處境，並約定一件自己要試的事。"}
+];
+// [標題, 情境, 說話者, 台詞, [界線,協作,承接,倡議,照顧], 實務提醒]
+const SC3=[
+ ["被當成機動人力","開學後，處室常請你支援活動、代課、整理資料。這週又被排了兩節代課，原本約好的晤談得取消。","組長","你比較沒有課，這節就麻煩你一下。",
+  ["我理解人手很緊，但這兩節我已經約了學生晤談。專輔的時間主要在個案與輔導工作上，代課可能要請別的安排。","這週我可以支援一節，另一節的晤談不能動。我們能不能一起看看，之後臨時人力要怎麼排比較好？","先答應下來，把晤談改時間，之後再找機會說明自己的工作量。","整理這學期被調用的時數與受影響的晤談，帶到輔導工作會議，請主任協助和處室討論分工原則。","先停下來看看自己的負荷，找輔導主任或同業聊聊，確認哪些可以拒絕、怎麼說比較好。"],
+  "許多縣市對專任輔導教師的工作內容與兼任行政有規範，可先向主任或縣市輔諮中心確認。遇到常態性調用，把「時數」和「受影響的學生」具體列出，比較容易討論。"],
+ ["有事都往輔導室送","導師遇到學生上課講話、不交作業、和同學吵架，都直接寫轉介單，或把學生帶到輔導室。","導師","他又在鬧了，你先帶去輔導室談一談。",
+  ["我先了解一下狀況。上課秩序比較需要班級經營處理；如果背後有情緒或家庭因素，我們再談是否需要個別輔導。","我們一起想想：這個行為在班上通常什麼時候出現？你在班上可以先做什麼，我這邊同步做什麼？","先把學生帶來，讓導師喘口氣，之後再找時間跟導師討論。","和輔導處室討論轉介流程，向全校說明三級輔導與轉介時機，附上一張簡單的轉介判斷表。","留意自己被「有事就丟過來」的感受，找同儕督導談談，怎麼在不傷關係下調整期待。"],
+  "學生輔導法把學校輔導分為發展性、介入性、處遇性三級。導師在發展性輔導裡就有角色，個別輔導不是每個行為問題的第一站。"],
+ ["「輔導有什麼用？」","個案會議上，一位老師說這個學生來輔導室半年了還是一樣，幾位同事跟著點頭。","老師","輔導談完回來還不是一樣，到底有沒有用？",
+  ["輔導的改變常常不是立刻看得到。我可以說明我們目前的目標，以及哪些部分不是輔導能單獨改變的。","謝謝你直接說。我們可以一起定一個大家都看得到的小指標，例如他一週主動求助的次數，之後一起看。","「你一定很辛苦，每天在班上面對他。」先接住老師的挫折，暫時不急著說明。","整理輔導成效的具體資料，例如出席、事件頻率與學生自評，在會議或期末報告中呈現，讓輔導工作被看見。","會後留意自己的委屈或自我懷疑，和督導討論：我是不是也在用「立刻改變」要求自己？"],
+  "把「有沒有用」轉成「我們期待看見什麼改變」，常能把對話從評價拉回合作。"],
+ ["行政程序卡住處遇","你想為學生申請外部資源，需要公文、會簽、核章。流程跑了三週還沒好，學生狀況越來越不穩。","承辦人","公文要照程序跑，我也沒辦法。",
+  ["我理解要照程序。這位學生的狀況比較急，我想確認有沒有緊急處理的管道，以及我這邊需要補什麼。","請承辦人帶你走一次流程，弄清楚每一關卡在哪、誰可以協助加速，下次提前準備。","先自己想辦法補上缺口，例如增加晤談次數、私下聯絡資源，等程序跑完。","向主任提出：常用的轉介與申請流程能否整理成標準作業與時程表，緊急個案另有快速通道。","允許自己對程序感到挫折，找熟悉學校行政的同事請教，不必一個人摸索。"],
+  "初到學校常卡在不熟流程。替自己建立一份流程筆記（窗口、所需文件、平均時程），是很實用的長期投資。"],
+ ["同事為孩子起爭執","導師和科任老師對同一位學生的處理方式意見相反，在辦公室吵了起來，主任請你去協調。","主任","你是輔導專業，你去處理一下他們兩個。",
+  ["我可以協助大家討論學生的需要，但老師之間的衝突，可能需要主任一起在場處理。","邀兩位老師一起坐下來，先各自說說「希望這孩子變得怎樣」，從共同目標開始談分工。","分別去找兩位老師，聽聽他們的辛苦，先讓氣氛緩和下來。","建議召開個案會議，讓與孩子相關的大人在有結構的場合討論，並留下共同的輔導策略。","覺察自己是否被放在「和事佬」的位置，評估這是不是自己該接、能接的任務。"],
+  "輔導老師可以促進大人對話，但不一定要成為衝突的調解人。用個案會議把討論拉回學生需要，常比私下調解更穩。"],
+ ["問題在大人身上","學生的痛苦主要來自家長長期的高壓與責罵。你和家長談過幾次，家長仍認為是孩子不夠努力。","家長","我是為他好，是他自己不爭氣。",
+  ["清楚告訴自己：我無法替家長改變，但我可以在學校給孩子一個穩定、安全的支持。","「你很在乎他的未來。我們能不能一起找個方法，讓他願意努力，你也不用一直生氣？」","多花時間陪孩子，給他更多晤談與關心，盡量補上家裡缺少的部分。","評估家庭狀況，與主任、社工或輔諮中心討論是否連結親職或家庭資源；若有安全疑慮，依規定通報。","留意自己對家長的憤怒與對孩子的心疼，帶進督導，分辨哪些是孩子的、哪些是自己的。"],
+  "當改變的關鍵在大人身上，可以同時走兩條線：在學校成為孩子的保護因子，並在系統中尋找能影響家庭的資源。"],
+ ["輔導與特教合作卡關","一位有特教身分的學生情緒常失控。資源班老師認為情緒問題該由輔導處理，你覺得也需要從特教支持一起調整。","資源班老師","情緒問題是你們輔導的，他的 IEP 我們已經寫好了。",
+  ["他的情緒行為可能和障礙特質有關，IEP 裡的行為支持也需要一起看。我可以負責的部分是……","提議一起開會，把行為功能、IEP 目標與輔導目標放在一起，分清楚誰做什麼、多久一起檢視。","先把學生的情緒輔導接下來，避免他在兩邊之間沒人管。","向輔導與特教的主管反映，建立雙方固定的合作會議與分工原則，不只靠個人默契。","留意自己在跨專業合作中的不確定感，找熟悉特教的同事或督導補充相關知能。"],
+  "特教與輔導需要密切合作。把分工寫進會議紀錄，比口頭默契可靠。"],
+ ["該不該開案","導師堅持要為一位上課分心的學生開個案。你初步晤談後認為，核心議題是學習方式與座位安排，不需要個案輔導。","導師","他一定有問題，你們就開案好好輔導他。",
+  ["我初步評估後，覺得目前比較不是個別輔導的議題。我可以說明我的判斷，以及建議的做法。","我們先試三週：你在班上調整座位與提醒方式，我做幾次觀察與諮詢，三週後一起看是否需要開案。","為了維持關係，先開案晤談幾次，再慢慢跟導師說明。","提議在輔導會議中把開案標準談清楚，讓導師知道哪些情況適合開案、哪些適合諮詢。","察覺自己面對導師堅持時的壓力：是專業判斷不夠有把握，還是怕關係變差？"],
+  "不開案不等於不處理。提供導師諮詢與班級策略，本身就是介入性輔導的一部分。"],
+ ["親師溝通全拜託你","導師不擅長和家長溝通，每次有狀況都請你打電話，連成績和作業的事也要你說。","導師","你比較會講話，家長那邊就拜託你了。",
+  ["和家長聯繫輔導相關的部分我可以負責；學業和班級事務，還是需要你直接跟家長說。","我們一起打第一通電話，我在旁邊協助；之後你先講，我再補充。","先幫導師打電話，免得家長和導師的關係更緊張。","建議學校辦理親師溝通的研習或經驗分享，讓導師有更多支持，而不只靠輔導室。","留意自己是否總被當成「會說話的人」，這份期待帶給你什麼感受與負擔？"],
+  "陪導師練習、示範，比長期代打更能讓親師關係長出來。"],
+ ["事件發生，要你「先問清楚」","班上疑似發生霸凌事件，學務處希望你先找相關學生問清楚發生什麼事，好決定後續處理。","學務人員","學生比較信任你，你先去問問看細節。",
+  ["我可以關心學生的情緒與安全，但釐清事實屬於調查程序，我不適合問案情，以免影響輔導關係與程序。","和學務處一起確認分工：誰負責通報與調查、輔導何時介入、如何陪伴雙方學生。","先找學生聊聊，順便了解一下狀況，再回報給學務處。","建議學校在校安與霸凌處理流程中，寫清楚輔導與調查的角色區隔，並向同仁說明。","留意被期待「快點問出來」的壓力，必要時向主任或輔諮中心確認自己的角色。"],
+  "輔導關係建立在信任上。在霸凌、性平等需要調查的事件中，輔導人員多半聚焦於關懷與支持，事實調查依相關規定由權責單位進行；細節請依學校與縣市規定確認。"]
+];
+const INNER3=["平靜／清楚","委屈／不被理解","想證明輔導有用","擔心破壞關係","生氣／被消耗","無力／卡住"];
+const TYPES3=[["我的時間與角色被調用",[0,1,8],"哪些請託我其實可以說不？說不的時候，我最擔心什麼？"],["我的專業被質疑",[2,7],"被質疑時，我更想證明自己，還是更想理解對方？"],["系統、程序與跨專業",[3,6,9],"卡住的是人，還是流程？我能影響的是哪一段？"],["大人之間的拉扯",[4,5],"夾在大人之間時，我如何讓孩子的需要留在中心？"]];
+function p3Stats(){const c=[0,0,0,0,0];Object.values(D.p3.ans).forEach(v=>c[v]++);const n=Object.keys(D.p3.ans).length,mx=Math.max(...c);const tops=n?c.map((v,k)=>v===mx?k:-1).filter(k=>k>=0):[];return {c,n,tops};}
+function p3Title({n,tops}){if(!n)return "先留下你的第一個選擇";if(tops.length===5)return "這次，你平均選用了五種站位";if(tops.length===1)return `這次，在校園裡你較常「${CATS3[tops[0]].name}」`;return `這次，你並列重視${tops.map(k=>"「"+CATS3[k].name+"」").join("、")}`;}
+function p3Desc({n,tops}){if(!n)return "我是正在找自己校園位置的輔導老師。";return "我是願意"+tops.map(k=>CATS3[k].phrase).join("，也願意")+"的輔導老師。";}
+const nm3=ks=>ks.map(k=>"「"+CATS3[k].name+"」").join("、");
+function count3(idxs){const c=[0,0,0,0,0];let n=0;idxs.forEach(i=>{const v=D.p3.ans[i];if(v!==undefined){c[v]++;n++;}});return {c,n};}
+const miniBar3=(c,n)=>`<div class="mini">${c.map((v,k)=>v?`<i style="width:${v/n*100}%;background:${CATS3[k].hex}"></i>`:"").join("")}</div>`;
+function rOffice(){
+  const i=D.p3.i,s=SC3[i],a=D.p3.ans[i],inn=D.p3.inner[i]||[],n=Object.keys(D.p3.ans).length;
+  app.innerHTML=`<section class="card">
+   <div class="qmeta"><span>校園站位　${i+1} / 10</span><span>已作答 ${n} 題</span></div>
+   <div class="progress"><i style="width:${(i+1)/10*100}%"></i></div>
+   <div class="sechead">${OBJ.house(46)}<div><div class="scene">第 ${i+1} 題</div><h2 style="font-size:20px">${s[0]}</h2></div></div>
+   <p class="situ">情境：${s[1]}</p>
+   <div class="quote">${s[2]}：「${s[3]}」</div>
+   <div class="ask">你最可能怎麼做？</div>
+   ${ORDER(i).map(c=>`<button class="opt ${a===c?"sel":""}" data-pick3="${c}"><span>${s[4][c]}</span></button>`).join("")}
+   ${a!==undefined?`<div class="box soft"><b style="color:var(--accent)">實務提醒</b><br>${s[5]}</div>`:""}
+   <div class="more"><h4>多看一層：面對這個處境，我的內在反應是……（選填）</h4>
+    <p class="note" style="margin:2px 0 6px">可複選，只用於回顧，不加入傾向計算。</p>
+    <div class="chips">${INNER3.map((f,k)=>`<button class="chip ${inn.includes(k)?"on":""}" data-chip="p3.inner.${i}" data-v="${k}">${f}</button>`).join("")}</div>
+   </div>
+   <div class="nav">
+    <button class="btn ghost" data-act="p3prev" ${i===0?"disabled":""}>上一題</button>
+    <div class="row">${a!==undefined?`<button class="btn ghost sm" data-act="p3clear">取消選擇</button>`:""}
+     <button class="btn" data-act="p3next">${i===9?"看結果":(a===undefined?"略過":"下一題")}</button></div>
+   </div>
+   <div class="row" style="margin-top:12px"><button class="btn ghost sm" data-go="office-result">先看暫時結果</button><button class="btn ghost sm" data-go="project-office">改用沉浸模式作答</button></div>
+  </section>`;
+}
+function inner3(){
+  const cnt=INNER3.map(()=>0);Object.values(D.p3.inner).forEach(a=>(a||[]).forEach(k=>cnt[k]++));
+  const combo=Object.keys(D.p3.ans).filter(i=>D.p3.ans[i]===2&&(D.p3.inner[i]||[]).some(k=>k===3||k===4)).map(i=>+i+1);
+  const prove=Object.keys(D.p3.inner).filter(i=>(D.p3.inner[i]||[]).includes(2)).map(i=>+i+1);
+  return {cnt,any:cnt.some(x=>x),combo,prove};
+}
+function bridge13(){
+  const a=p1Stats(),b=p3Stats();if(!a.n||!b.n)return null;
+  let t=`面對孩子時，你較常從${nmL(a.tops)}開始；面對學校裡的大人時，你較常${nm3(b.tops)}。`;
+  if(a.tops.includes(0)&&b.tops.includes(2))t+="你對孩子與對大人都習慣先接住，這份溫度很珍貴；也可以留意，誰在接住你？你的界線放在哪裡？";
+  else if(a.tops.includes(2)&&b.tops.includes(0))t+="你在晤談中善於整理步驟，在校園裡也能把位置說清楚。可以討論：這份清楚，有沒有讓對方感到距離？";
+  else t+="可以討論：面對孩子與面對大人時，你的位置為什麼相同或不同？這和你的經驗、角色或學校文化有什麼關係？";
+  return t;
+}
+function rP3(){
+  const st=p3Stats(),{c,n,tops}=st,I=inner3();
+  const used=c.filter(v=>v).length,none=c.map((v,k)=>v?-1:k).filter(k=>k>=0);
+  const segs=[];
+  Object.entries(D.p3.inner).forEach(([i,a])=>{i=+i;if(segs.length<3&&((a||[]).includes(4)||(a||[]).includes(5))&&!segs.includes(i))segs.push(i);});
+  Object.entries(D.p3.ans).forEach(([i,v])=>{i=+i;if(segs.length<3&&c[v]===1&&!segs.includes(i))segs.push(i);});
+  const B=bridge13();
+  app.innerHTML=`<section class="card">
+   ${secHead("house","校園站位 · 專業與行政之間的我",p3Title(st))}
+   <div class="big-sent">${p3Desc(st)}</div>
+   <p class="note">這份結果整理你在這些校園處境中的選擇，提供可討論的假設。沒有哪一種站位比較正確；同一個人在不同學校、不同關係裡，也常會選得不一樣。</p>
+   ${n?`<div class="box soft">${n<10?`這是依 ${n} 題形成的暫時回饋；尚有 ${10-n} 題未作答。`:"你已完成全部處境。這份結果只是這一次的記錄。"}${tops.length>1?"<br>最高次數並列，這裡會保留並列結果；不因分數接近就推論你更有彈性或更成熟。":""}</div>
+   <div class="sec"><h3>站位光譜</h3>
+    ${CATS3.map((k,j)=>`<div class="bar"><span><span class="dot" style="background:${k.hex}"></span>${k.name}</span><span class="t"><i style="width:${c[j]/n*100}%;background:${k.hex}"></i></span><span class="n">${c[j]} 次，${Math.round(c[j]/n*100)}%</span></div>`).join("")}
+    <p class="note">百分比＝該類選擇次數 ÷ 已作答 ${n} 題；略過不計。</p></div>
+   <div class="sec"><h3>作答軌跡</h3>
+    <div class="traj" style="grid-template-columns:repeat(10,1fr)">${SC3.map((_,i)=>{const v=D.p3.ans[i];return `<span class="td" style="${v!==undefined?"background:"+CATS3[v].hex:""}">${i+1}</span>`;}).join("")}</div>
+    <div class="legend">${CATS3.map(k=>`<span><span class="dot" style="background:${k.hex}"></span>${k.name}</span>`).join("")}<span><span class="dot" style="background:#ddd6c8"></span>略過</span></div></div>
+   <div class="sec"><h3>五種站位的閱讀</h3>
+    ${CATS3.map((k,j)=>`<details ${tops.includes(j)?"open":""}><summary><span class="dot" style="background:${k.hex}"></span>${k.name}（${c[j]} 次）</summary>
+     <div class="kv"><b>可能的優勢：</b>${k.strength}</div><div class="kv"><b>優勢用過頭的風險：</b>${k.risk}</div>
+     <div class="kv"><b>團督追問：</b>${k.ask}</div><div class="kv"><b>下一個小實驗：</b>${k.exp}</div></details>`).join("")}</div>
+   <div class="sec"><h3>不同處境下的你</h3>
+    ${TYPES3.map(t=>{const r=count3(t[1]);return `<div class="box"><b>當${t[0]}</b> <span class="note">第 ${t[1].map(i=>i+1).join("、")} 題</span>
+     ${r.n?`${miniBar3(r.c,r.n)}<div class="kv">你較常${nm3(dom(r.c))}。</div><div class="note">團督追問：${t[2]}</div>`:`<div class="note">這類處境尚未作答。</div>`}</div>`;}).join("")}</div>
+   <div class="sec"><h3>站位的廣度</h3>
+    <p class="kv">${used<=2?`你在 ${n} 題中用了 ${used} 種站位，相當集中。這可能是你清楚的專業立場，也可能是壓力下最熟悉的反應；可以想想，換一所學校或一位主管，你會不會選得不同？`:used<=4?`你用了 ${used} 種站位，會視處境調整。值得留意的是：你調整的依據，多半來自孩子的需要、關係的考量，還是自己的負荷？`:"五種站位你都用過。分布廣可能代表你會依處境調整，也可能是還在找自己的位置；可以挑一題說說當時的判斷。"}</p>
+    ${none.length?`<div class="box">這次沒有選到：${nm3(none)}。可以想想，哪一種處境可能需要你多走一步到這裡？</div>`:""}</div>`:""}
+   <div class="sec"><h3>處境背後的自己</h3>
+    <div class="box">${I.any?`你勾選過：${INNER3.map((f,k)=>I.cnt[k]?`${f}（${I.cnt[k]} 題）`:"").filter(Boolean).join("、")}。這是你的自我描述，不代表這些感受一定促成某種站位。`:"你尚未記錄內在反應。下次可以挑一個最有感的處境，留意當時的情緒、身體與自我期待。"}</div>
+    ${I.combo.length?`<div class="box soft">在第 ${I.combo.join("、")} 題，你選了承接補位，同時感到擔心破壞關係或被消耗。可以討論：這次的補位，是孩子需要，還是關係的壓力？我可以怎麼照顧自己的負荷？</div>`:""}
+    ${I.prove.length?`<div class="box soft">在第 ${I.prove.join("、")} 題，你感到「想證明輔導有用」。這份在乎很真實；也可以討論：我想證明給誰看？這份壓力如何影響我的選擇？</div>`:""}
+   </div>
+   ${segs.length?`<div class="sec"><h3>建議帶進團督的處境</h3>${segs.map(i=>{const s=SC3[i],v=D.p3.ans[i];return `<div class="box"><b>第 ${i+1} 題｜${s[0]}</b><div class="kv">${s[2]}：「${s[3]}」</div>${v!==undefined?`<div class="kv"><span class="tagc" style="background:${CATS3[v].hex}">${CATS3[v].name}</span>${s[4][v]}</div>`:""}</div>`;}).join("")}<p class="note">同儕可以協助：先說說當時的學校脈絡與關係，再一起想第二種站位。</p></div>`:""}
+   ${B?`<div class="sec"><h3>對孩子的我，與在校園裡的我</h3><div class="box soft">${B}</div></div>`:""}
+   <div class="sec"><h3>這份分析，貼近你嗎？</h3>
+    <div class="chips">${["貼近我","部分貼近","不太貼近"].map((t,k)=>`<button class="chip ${D.p3.fit===k?"on":""}" data-radio="p3.fit" data-v="${k}">${t}</button>`).join("")}</div>
+    <textarea data-bind="p3.fitNote" placeholder="例如：我選擇先承接，是因為這位導師剛接班很辛苦；換成資深導師我會直接說明界線。">${esc(D.p3.fitNote)}</textarea></div>
+   <div class="row" style="margin-top:16px"><button class="btn" data-act="copy3">複製分析文字</button><button class="btn" data-go="report">產出報告／給 AI 分析</button><button class="btn ghost" data-act="p3back">回去作答</button></div>
+   <p class="disclaimer">處境與分類皆為本活動自編，未經心理計量驗證。實務提醒僅供討論參考，相關規定請依所屬學校與縣市確認。</p>
+  </section>`;
+}
+function copy3(){
+  const st=p3Stats(),{c,n}=st,I=inner3();
+  let t=`【校園站位｜專業與行政之間的我】\n${p3Title(st)}\n${p3Desc(st)}\n`;
+  if(n){t+=`\n站位光譜（已作答 ${n} 題）：\n`+CATS3.map((k,j)=>`・${k.name} ${c[j]} 次（${Math.round(c[j]/n*100)}%）`).join("\n")+"\n";
+    t+=`\n不同處境下：\n`+TYPES3.map(ty=>{const r=count3(ty[1]);return `・當${ty[0]}：${r.n?"較常"+nm3(dom(r.c)):"未作答"}`;}).join("\n")+"\n";}
+  if(I.any)t+=`\n內在反應：${INNER3.map((f,k)=>I.cnt[k]?`${f}（${I.cnt[k]}）`:"").filter(Boolean).join("、")}\n`;
+  const B=bridge13();if(B)t+=`\n對孩子與對大人：${B}\n`;
+  if(D.p3.fit!=null)t+=`\n貼近程度：${["貼近我","部分貼近","不太貼近"][D.p3.fit]}\n`;
+  if(D.p3.fitNote.trim())t+=`補充或修正：${D.p3.fitNote.trim()}\n`;
+  return t+"\n這是自編團督活動的選擇分布，不是正式量表或能力評量。";
+}
+function raw3(){
+  const L=["【三、校園站位作答紀錄】（學校專任輔導教師常見的專業與行政處境，共 10 題；五類站位：釐清界線、協作分工、承接補位、系統倡議、照顧與求援）"];
+  const {c,n}=p3Stats();
+  if(!n&&!Object.keys(D.p3.inner).length){L.push("尚未作答。");return L.join("\n");}
+  SC3.forEach((s,i)=>{const v=D.p3.ans[i],inn=(D.p3.inner[i]||[]).map(k=>INNER3[k]);
+    L.push(`\n第 ${i+1} 題｜${s[0]}\n情境：${s[1]}\n${s[2]}：「${s[3]}」\n我的選擇：${v!==undefined?`［${CATS3[v].name}］${s[4][v]}`:"略過"}${inn.length?`\n當下的內在反應：${inn.join("、")}`:""}`);});
+  if(n)L.push(`\n統計（已作答 ${n} 題）：`+CATS3.map((k,j)=>`${k.name} ${c[j]} 次（${Math.round(c[j]/n*100)}%）`).join("、"));
+  if(D.p3.fit!=null)L.push(`我覺得自動分析「${["貼近我","部分貼近","不太貼近"][D.p3.fit]}」`);
+  if(D.p3.fitNote.trim())L.push(`我的補充或修正：${D.p3.fitNote.trim()}`);
+  return L.join("\n");
+}
+function rProjOffice(){
+  const i=D.p3.i,s=SC3[i],a=D.p3.ans[i],inn=D.p3.inner[i]||[],n=Object.keys(D.p3.ans).length;
+  app.innerHTML=`<section class="pj">
+   <div class="pjbar"><span>沉浸作答・校園站位　${i+1} / 10　已作答 ${n} 題</span>
+    <span class="row">${pjSwitch()}<button class="btn ghost sm" data-act="pjfs">全螢幕</button><button class="btn ghost sm" data-go="office-result">結束並看結果</button></span></div>
+   <div class="pjprog"><i style="width:${(i+1)/10*100}%"></i></div>
+   <div class="scene">第 ${i+1} 題｜${s[0]}</div>
+   <p class="situ">情境：${s[1]}</p>
+   <div class="quote">${s[2]}：「${s[3]}」</div>
+   <div class="situ" style="font-weight:700;color:#fff;margin-top:14px">你最可能怎麼做？</div>
+   <div class="pjopts">${ORDER(i).map((c,j)=>`<button class="pjopt ${a===c?"sel":""}" data-pick3="${c}"><span class="k">${NUM[j]}</span><span>${s[4][c]}</span></button>`).join("")}</div>
+   ${a!==undefined?`<div class="disc" style="margin-bottom:14px"><b>實務提醒：</b>${s[5]}</div>`:""}
+   <div class="disc"><b>多看一層：</b>面對這個處境，我的內在反應是……（選填，可複選）
+    <div class="chips pjchips">${INNER3.map((f,k)=>`<button class="chip ${inn.includes(k)?"on":""}" data-chip="p3.inner.${i}" data-v="${k}">${f}</button>`).join("")}</div></div>
+   <div class="pjnav">
+    <button class="btn ghost" data-act="p3pprev" ${i===0?"disabled":""}>← 上一題</button>
+    <span class="hint">鍵盤：1–5 選擇，← → 換題</span>
+    <span class="row">${a!==undefined?`<button class="btn ghost sm" data-act="p3pclear">取消選擇</button>`:""}
+    <button class="btn" data-act="p3pnext">${i===9?"完成，看結果":(a===undefined?"略過 →":"下一題 →")}</button></span>
+   </div>
+  </section>`;
+}
+
+/* ================= REPORT ================= */
+function rawRecord(){
+  const L=[];const {c,n}=p1Stats();
+  L.push("【一、情境札記作答紀錄】（個案為虛構角色「小禾」，共 15 題；五類回應：關係與接納、脈絡與探索、結構與行動、資源與例外、象徵與媒介）");
+  if(!n&&!Object.keys(D.p1.inner).length)L.push("尚未作答。");
+  else{
+    SC.forEach((s,i)=>{const v=D.p1.ans[i],inn=(D.p1.inner[i]||[]).map(k=>INNER[k]);
+      L.push(`\n第 ${i+1} 題｜${s[0]}\n情境：${s[1]}\n小禾：「${s[2]}」\n我的回應：${v!==undefined?`［${CATS[v].name}］${s[3][v]}`:"略過"}${inn.length?`\n當下的內在反應：${inn.join("、")}`:""}`);});
+    if(n){L.push(`\n統計（已作答 ${n} 題）：`+CATS.map((k,j)=>`${k.name} ${c[j]} 次（${Math.round(c[j]/n*100)}%）`).join("、"));
+      const P=phaseInfo();L.push("隨會談階段："+P.ph.map((p,i)=>`${PHASES[i][0]}${p.n?"以"+nmL(p.d)+"為主":"未作答"}`).join("；"));}
+    if(D.p1.fit!=null)L.push(`我覺得自動分析「${["貼近我","部分貼近","不太貼近"][D.p1.fit]}」`);
+    if(D.p1.fitNote.trim())L.push(`我的補充或修正：${D.p1.fitNote.trim()}`);
+  }
+  L.push("\n【二、自我速寫作答紀錄】");
+  const fr=sel("p2.fr",FR);
+  L.push(`孩子沉默五分鐘時，我最可能：${fr.length?fr.join("、"):"未選"}${D.p2.frNote.trim()?`\n補充：${D.p2.frNote.trim()}`:""}`);
+  L.push("\n12 條光譜（0＝左端，100＝右端；低於 40 靠近左端、40–60 為兩端之間、高於 60 靠近右端；這是自我定位，不是分數）：");
+  SP.forEach((s,i)=>{const v=D.p2.sp[i];L.push(`・${s[0]}（${s[2]} ↔ ${s[3]}）：${v==null?"未定位":`${v}，${spSide(i)==="m"?"兩端之間":"靠近「"+s[2+spSide(i)]+"」"}`}`);});
+  L.push("\n深入反思：");
+  RF.forEach((r,i)=>{const s=sel("p2.refl."+i,r[1]),nt=(D.p2.reflNote[i]||"").trim();L.push(`${i+1}. ${r[0]}\n   勾選：${s.length?s.join("、"):"未選"}${nt?`\n   補充：${nt}`:""}`);});
+  L.push(`\n取向映照（自評，不是學派認證）：\n${thText()}`);
+  const TB=thBridge();if(TB&&(TB.same.length||TB.gap.length))L.push("取向與情境選擇對照：\n"+[...TB.same,...TB.gap].map(x=>"・"+x).join("\n"));
+  L.push(`\n自畫像：${portraitSentence()}${D.p2.name.trim()?"（自行命名）":"（自動產生）"}`);
+  const ex=sel("p2.exps",EXPS);if(ex.length||D.p2.expNote.trim())L.push(`想帶走的小實驗：${ex.join("、")}${D.p2.expNote.trim()?`\n補充：${D.p2.expNote.trim()}`:""}`);
+  if(D.p2.fix.trim())L.push(`我對自畫像的補充或修正：${D.p2.fix.trim()}`);
+  const X=cross();if(X.length)L.push(`觸發的交叉提問：${X.map(x=>x[0]).join("、")}`);
+  const b=bridge();if(b&&(b.same.length||b.gap.length))L.push("兩部分對照：\n"+[...b.same.map(x=>"・呼應："+x),...b.gap.map(x=>"・落差："+x)].join("\n"));
+  L.push("\n"+raw3());
+  const B=bridge13();if(B)L.push(`\n對孩子與對大人的對照：${B}`);
+  return L.join("\n");
+}
+function aiText(){
+  return `你是一位熟悉學校輔導工作與臨床督導的同儕督導夥伴。以下是一位學校輔導老師在「同儕團督：我是怎樣的輔導者？」自編活動中的作答紀錄，包含三部分：面對孩子的情境札記、自我速寫光譜，以及面對學校專業與行政處境的「校園站位」。請協助他進行自我覺察與團督準備。
+
+請遵守：
+1. 這是自編活動，未經心理計量驗證，不是心理測驗。請只提出「可討論的假設」，不判定人格、能力或學派，也不做任何診斷。
+2. 每個觀點都引用具體作答作為依據（例如「第 5 題你選了……」），並清楚區分「他提供的資料」與「你的推測」。
+3. 不把某一類回應或光譜位置視為比較好、比較成熟。
+4. 語氣溫和、具體、不說教，使用繁體中文。
+
+請依序回應：
+一、整體印象：他此刻的介入傾向與可能的工作信念（3–5 點，附依據）
+二、優勢，以及優勢用過頭時可能的風險
+三、作答中的一致與張力：情境選擇與光譜自評之間、內在反應與回應之間、不同會談階段之間，以及他面對孩子與面對學校大人時的位置異同
+四、可能較少被看見的部分，或值得留意的反應模式（也可對照他自評的取向映照與實際選擇）
+五、3 個可以帶進同儕團督的具體提問
+六、2 個下一次晤談可以試做的小實驗，並說明可以觀察孩子的哪些反應
+七、最後反問他 2 個問題，幫助他修正這份分析
+
+${rawRecord()}`;
+}
+function reportText(){
+  const d=new Date(),ds=`${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;
+  return `同儕團督｜我是怎樣的輔導者？　自我覺察報告\n產出日期：${ds}\n\n${copy1()}\n\n────────────\n\n${copy2()}\n\n────────────\n\n${copy3()}\n\n────────────\n\n【附錄：完整作答紀錄】\n${rawRecord()}`;
+}
+function rReport(){
+  const n1=Object.keys(D.p1.ans).length,n2=Object.keys(D.p2.sp).length,rf=RF.filter((_,i)=>(D.p2.refl[i]||[]).length).length;
+  app.innerHTML=`<section class="card">
+   ${secHead("sprout","報告","產出報告")}
+   <p class="lead">整理目前的作答：情境札記 ${n1} / 15 題、光譜 ${n2} / 12 條、深入反思 ${rf} / 6 題、校園站位 ${Object.keys(D.p3.ans).length} / 10 題。可以作答到一半就先產出，之後隨時回來更新。</p>
+   <div class="box soft"><b>貼到 AI 前請先確認</b><br>補充文字中沒有學生、家長或同事的姓名、班級、學校等可辨識身分的資訊。AI 的回應只是另一個討論觀點，仍以你自己和團督夥伴的判斷為主。</div>
+  </section>
+  <section class="card">
+   <h3 style="font-size:19px">① 給 AI 分析的內文</h3>
+   <p class="note">內含分析指示和完整作答紀錄（每題的情境與你選的回應原文）。複製後直接貼到 Claude、ChatGPT 等 AI 對話框即可。</p>
+   <div class="row" style="margin:8px 0"><button class="btn" data-act="copyai">複製給 AI 分析的內文</button></div>
+   <textarea readonly id="aiBox" style="min-height:220px;font-size:13px">${esc(aiText())}</textarea>
+   <p class="note">如果按鈕無法複製，可以點進上方文字框，長按「全選」再複製。</p>
+  </section>
+  <section class="card">
+   <h3 style="font-size:19px">② 完整報告</h3>
+   <p class="note">包含情境札記分析、自畫像摘要與完整作答紀錄，適合存進筆記或給督導閱讀。</p>
+   <div class="row" style="margin:8px 0"><button class="btn" data-act="copyrep">複製完整報告</button><button class="btn" data-act="pdf">下載自畫像 PDF</button><button class="btn ghost" data-go="scenes-result">看情境札記結果</button><button class="btn ghost" data-go="portrait">看自畫像</button><button class="btn ghost" data-go="office-result">看校園站位結果</button></div>
+   <div class="box" style="white-space:pre-wrap;font-size:13.5px;max-height:480px;overflow:auto">${esc(reportText())}</div>
+  </section>`;
+}
+
+/* ================= PROJECTION ================= */
+function rProj(){
+  const i=D.p1.i,s=SC[i],a=D.p1.ans[i],inn=D.p1.inner[i]||[],n=Object.keys(D.p1.ans).length;
+  app.innerHTML=`<section class="pj">
+   <div class="pjbar"><span>沉浸作答・情境札記　${i+1} / 15　已作答 ${n} 題</span>
+    <span class="row">${pjSwitch()}<button class="btn ghost sm" data-act="pjfs">全螢幕</button><button class="btn ghost sm" data-go="scenes-result">結束並看結果</button></span></div>
+   <div class="pjprog"><i style="width:${(i+1)/15*100}%"></i></div>
+   <div class="scene">第 ${i+1} 題｜${s[0]}</div>
+   <p class="situ">情境：${s[1]}</p>
+   <div class="quote">小禾：「${s[2]}」</div>
+   <div class="situ" style="font-weight:700;color:#fff;margin-top:14px">你會怎麼回應？</div>
+   <div class="pjopts">${ORDER(i).map((c,j)=>`<button class="pjopt ${a===c?"sel":""}" data-pick="${c}"><span class="k">${NUM[j]}</span><span>${s[3][c]}</span></button>`).join("")}</div>
+   <div class="disc"><b style="color:#8fd1c7">多看一層：</b>選這個回應時，我的內在反應是……（選填，可複選）
+    <div class="chips pjchips">${INNER.map((f,k)=>`<button class="chip ${inn.includes(k)?"on":""}" data-chip="p1.inner.${i}" data-v="${k}">${f}</button>`).join("")}</div></div>
+   <div class="pjnav">
+    <button class="btn ghost" data-act="pjprev" ${i===0?"disabled":""}>← 上一題</button>
+    <span class="hint">鍵盤：1–5 選擇・← → 換題</span>
+    <span class="row">${a!==undefined?`<button class="btn ghost sm" data-act="pjclear">取消選擇</button>`:""}
+    <button class="btn" data-act="pjnext">${i===14?"完成，看結果":(a===undefined?"略過 →":"下一題 →")}</button></span>
+   </div>
+  </section>`;
+}
+
+/* ===== 沉浸作答：自我速寫 ===== */
+const SK_N=1+SP.length+RF.length+1; // 20 步
+function pjSwitch(){return `<span class="row"><button class="btn ghost sm ${page==="project"?"on":""}" data-go="project">情境札記</button><button class="btn ghost sm ${page==="project-sketch"?"on":""}" data-go="project-sketch">自我速寫</button><button class="btn ghost sm ${page==="project-office"?"on":""}" data-go="project-office">校園站位</button></span>`;}
+function rProjSketch(){
+  let st=D.p2.step||0;if(st>=SK_N)st=SK_N-1;
+  const n2=Object.keys(D.p2.sp).length;
+  let label,body;
+  if(st===0){
+    label="第一反應";
+    body=`<div class="scene">第一反應</div>
+     <div class="quote">孩子沉默了，你會怎麼做？</div>
+     <p class="situ">想像孩子坐在面前五分鐘沒有說話。先選最貼近自己的反應，可複選，也可以不選。沒有標準答案。</p>
+     <div class="situ" style="font-weight:700;color:#fff;margin-top:12px">我最可能採取的行動是……</div>
+     <div class="chips col pjchips">${FR.map((o,k)=>`<button class="chip ${(D.p2.fr||[]).includes(k)?"on":""}" data-chip="p2.fr" data-v="${k}">${o}</button>`).join("")}</div>
+     <textarea data-bind="p2.frNote" placeholder="其他反應或補充（選填）：例如：我想拿出桌遊，也發現自己的肩膀有點緊。">${esc(D.p2.frNote)}</textarea>`;
+  }else if(st<=SP.length){
+    const i=st-1,s=SP[i],v=D.p2.sp[i];
+    label=`光譜 ${i+1} / 12`;
+    body=`<div class="scene">光譜 ${i+1} / 12｜${GROUPS[s[1]]}</div>
+     <div class="quote">${s[0]}：${s[2]} ↔ ${s[3]}</div>
+     <p class="situ">以最近的輔導經驗為例，標記「我自然會站的位置」，而不是「我覺得應該站的位置」。不想填可以略過。</p>
+     <div class="sp pjsp ${v==null?"unset":""}" id="sp${i}">
+      <div class="ends"><span>${s[2]}</span><span class="st" id="spl${i}">${spLabel(i)}</span><span>${s[3]}</span></div>
+      <input type="range" min="0" max="100" step="1" value="${v==null?50:v}" data-sp="${i}" aria-label="${s[0]}：${s[2]}到${s[3]}">
+      <div class="row"><button class="btn ghost sm" data-act="spmid" data-i="${i}">確認居中</button><button class="btn ghost sm" data-act="spclr" data-i="${i}">清除</button></div>
+     </div>
+     <div class="disc"><b style="color:#8fd1c7">追問：</b>${s[4]}</div>`;
+  }else if(st===SK_N-1){
+    label="取向映照";
+    body=`<div class="scene">取向映照</div>
+     <div class="quote">我會借用哪些視角？</div>
+     <p class="situ">依你的實際工作，替每個視角選一個位置，不熟的也可以跳過。這不是學派認證或能力評量。</p>
+     <div class="pjth">${thPicker(true)}</div>
+     <textarea data-bind="p2.thOther" placeholder="其他我常借用的取向（選填）">${esc(D.p2.thOther||"")}</textarea>`;
+  }else{
+    const q=st-1-SP.length,r=RF[q];
+    label=`深入反思 ${q+1} / 6`;
+    body=`<div class="scene">深入反思 ${q+1} / 6</div>
+     <div class="quote">${r[0]}</div>
+     <p class="situ">可複選、取消，也可以略過。</p>
+     <div class="chips col pjchips">${r[1].map((o,k)=>`<button class="chip ${(D.p2.refl[q]||[]).includes(k)?"on":""}" data-chip="p2.refl.${q}" data-v="${k}">${o}</button>`).join("")}</div>
+     <textarea data-bind="p2.reflNote.${q}" placeholder="其他或補充：${r[2]}">${esc(D.p2.reflNote[q]||"")}</textarea>`;
+  }
+  app.innerHTML=`<section class="pj">
+   <div class="pjbar"><span>沉浸作答・自我速寫　${st+1} / ${SK_N}　光譜已定位 ${n2} 條</span>
+    <span class="row">${pjSwitch()}<button class="btn ghost sm" data-act="pjfs">全螢幕</button><button class="btn ghost sm" data-go="portrait">結束並看自畫像</button></span></div>
+   <div class="pjprog"><i style="width:${(st+1)/SK_N*100}%"></i></div>
+   ${body}
+   <div class="pjnav">
+    <button class="btn ghost" data-act="skprev" ${st===0?"disabled":""}>← 上一步</button>
+    <span class="hint">${label}・鍵盤 ← → 換頁</span>
+    <button class="btn" data-act="sknext">${st===SK_N-1?"完成，看自畫像":"下一步 →"}</button>
+   </div>
+  </section>`;
+}
+
+
+/* ================= PDF：帶走一幅自畫像 ================= */
+const LIB_H2C="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
+const LIB_PDF="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+function loadScript(src){return new Promise((ok,no)=>{if(document.querySelector(`script[src="${src}"]`)){ok();return;}const s=document.createElement("script");s.src=src;s.onload=ok;s.onerror=()=>no(new Error("load "+src));document.head.appendChild(s);});}
+const mkChars=t=>[...String(t)].map(ch=>`<span class="mk">${esc(ch)}</span>`).join("");
+function todayStr(){const d=new Date();return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;}
+function pdfBlocks(){
+  const S=summaryLists(),R=reflExcerpt(),B=[];
+  const nameLine=(D.p2.name||"").trim();
+  B.push(`<div class="pcover">
+    <div class="pc-top"><span>同儕團督｜我是怎樣的輔導者？</span><span>${todayStr()}</span></div>
+    <div class="pc-arch"><svg viewBox="0 0 400 330" preserveAspectRatio="none" aria-hidden="true"><circle cx="150" cy="120" r="150" fill="none" stroke="#b9c2a6" stroke-width="1.2"/><circle cx="280" cy="220" r="150" fill="none" stroke="#b9c2a6" stroke-width="1.2"/></svg>
+      <div class="pc-eb">帶走一幅此刻的自畫像</div>
+      <div class="pc-sent">${mkChars(portraitSentence())}</div>
+      ${nameLine?`<div class="pc-sub">（我用自己的話命名）</div>`:""}
+    </div>
+    <p class="pc-quote">我們選擇的介入，也映照著我們是誰。</p>
+  </div>`);
+  if(S.L.length)B.push(`<div class="sec"><h3>我的光譜</h3>${ul(S.my)}</div>${spOverview()}`);
+  if(S.L.length)B.push(groupReading());
+  if(S.res.length)B.push(`<div class="sec"><h3>我的優勢｜可能的資源</h3>${ul(S.res)}</div><div class="sec"><h3>優勢用過頭的風險</h3>${ul(S.risk)}</div><div class="sec"><h3>下一個可嘗試的介入</h3>${ul(S.next)}</div>`);
+  if(thLists().some(a=>a.length)||(D.p2.thOther||"").trim())B.push(thSection());
+  if(R.length)B.push(`<div class="sec"><h3>我的反思摘錄</h3>${R.map(r=>`<div class="box"><b style="font-size:13px;color:var(--mute)">${r[0]}</b>${ul(r[1])}${r[2].trim()?`<div class="kv">補充：${esc(r[2].trim())}</div>`:""}</div>`).join("")}</div>`);
+  const ex=sel("p2.exps",EXPS);
+  if(ex.length||D.p2.expNote.trim()||D.p2.fix.trim())B.push(`<div class="sec"><h3>我想帶走的小實驗</h3>${ul(ex)}${D.p2.expNote.trim()?`<div class="box">${esc(D.p2.expNote.trim())}</div>`:""}${D.p2.fix.trim()?`<div class="kv"><b>我的補充或修正：</b>${esc(D.p2.fix.trim())}</div>`:""}</div>`);
+  const a=p1Stats();
+  if(a.n){const P=phaseInfo();B.push(`<div class="sec"><h3>情境札記：我的介入傾向</h3><div class="psent">${mkChars(p1Desc(a))}</div><p class="kv">${p1Title(a)}（已作答 ${a.n} / 15 題）</p>
+    ${CATS.map((k,j)=>`<div class="bar"><span><span class="dot" style="background:${k.hex}"></span>${k.name}</span><span class="t"><i style="width:${a.c[j]/a.n*100}%;background:${k.hex}"></i></span><span class="n">${a.c[j]} 次，${Math.round(a.c[j]/a.n*100)}%</span></div>`).join("")}
+    ${P.txt?`<p class="kv">${P.txt}</p>`:""}</div>`);}
+  const b=p3Stats();
+  if(b.n){const BR=bridge13();B.push(`<div class="sec"><h3>校園站位：專業與行政之間的我</h3><div class="psent">${mkChars(p3Desc(b))}</div><p class="kv">${p3Title(b)}（已作答 ${b.n} / 10 題）</p>
+    ${CATS3.map((k,j)=>`<div class="bar"><span><span class="dot" style="background:${k.hex}"></span>${k.name}</span><span class="t"><i style="width:${b.c[j]/b.n*100}%;background:${k.hex}"></i></span><span class="n">${b.c[j]} 次，${Math.round(b.c[j]/b.n*100)}%</span></div>`).join("")}
+    ${BR?`<div class="box soft">${BR}</div>`:""}</div>`);}
+  B.push(`<div class="sec"><h3>把分析帶回一段真實互動</h3><p class="kv">挑一個最近的晤談片段，依序說明：</p>
+    <ol class="steps"><li>孩子當時說了或做了什麼？</li><li>我注意到哪些想法、情緒與身體訊號？</li><li>我選擇了什麼回應？希望它產生什麼作用？</li><li>孩子接下來怎麼反應？</li><li>如果多一種選擇，我願意試什麼？</li></ol>
+    <p class="disclaimer">這是自我反思草稿，不是心理測驗、學派分類或能力評量。選項與分類皆為本活動自編，未經心理計量驗證。</p></div>`);
+  return B;
+}
+async function buildPages(){
+  await loadScript(LIB_H2C);
+  const root=document.createElement("div");root.id="pdfroot";
+  root.innerHTML=pdfBlocks().map(b=>`<div class="pb">${b}</div>`).join("");
+  document.body.appendChild(root);
+  try{
+    await document.fonts.ready;await new Promise(r=>setTimeout(r,500));await document.fonts.ready;
+    // A4 頁面畫布：1240×1754（約 150 dpi），邊界 82px
+    const PW=1240,PH=1754,M=82,CW=PW-2*M,pages=[];
+    let ctx=null,y=0;
+    const newPage=()=>{const c=document.createElement("canvas");c.width=PW;c.height=PH;ctx=c.getContext("2d");ctx.fillStyle="#f5f1ea";ctx.fillRect(0,0,PW,PH);pages.push(c);y=M;};
+    newPage();
+    for(const el of root.querySelectorAll(".pb")){
+      const cv=await html2canvas(el,{scale:2,backgroundColor:"#f5f1ea",logging:false});
+      const k=CW/cv.width,hh=cv.height*k;
+      if(hh<=PH-2*M){
+        if(y+hh>PH-M)newPage();
+        ctx.drawImage(cv,M,y,CW,hh);y+=hh+18;
+      }else{
+        let sy=0;
+        if(y>M+1)newPage();
+        while(sy<cv.height){
+          const shSrc=Math.min(Math.floor((PH-M-y)/k),cv.height-sy);
+          ctx.drawImage(cv,0,sy,cv.width,shSrc,M,y,CW,shSrc*k);
+          sy+=shSrc;y+=shSrc*k+18;
+          if(sy<cv.height)newPage();
+        }
+      }
+    }
+    pages.forEach((c,i)=>{const g=c.getContext("2d");g.fillStyle="#968f84";g.font="22px sans-serif";g.textAlign="right";g.fillText(`${i+1} / ${pages.length}`,PW-M,PH-40);});
+    return pages;
+  }finally{root.remove();}
+}
+function showImages(pages){
+  const old=document.getElementById("pdfov");if(old)old.remove();
+  const ov=document.createElement("div");ov.id="pdfov";ov.setAttribute("role","dialog");ov.setAttribute("aria-label","自畫像圖片版");
+  ov.innerHTML=`<div class="ovbar"><div><b>自畫像圖片版（共 ${pages.length} 頁）</b><div class="note">這個瀏覽器無法直接存 PDF。長按每一頁圖片，選「下載圖片」或「分享」即可帶走；電腦可按右鍵另存。</div></div><button class="btn sm" data-act="ovclose">關閉</button></div>
+   <div class="ovpages">${pages.map((c,i)=>`<img src="${c.toDataURL("image/jpeg",.9)}" alt="自畫像第 ${i+1} 頁">`).join("")}</div>`;
+  document.body.appendChild(ov);
+}
+async function makePdf(btn){
+  const label=btn.textContent;
+  let dl=null;
+  try{dl=window.claude&&window.claude.use?await window.claude.use("downloads"):null;}catch(e){dl=null;}
+  btn.disabled=true;btn.textContent="正在產生……";
+  try{
+    const pages=await buildPages();
+    const standalone=!window.claude; // 放在自己的網站時，沒有 Claude 的外框，可直接下載
+    if(!dl&&!standalone){showImages(pages);return;}
+    await loadScript(LIB_PDF);
+    const {jsPDF}=window.jspdf;const pdf=new jsPDF({unit:"mm",format:"a4"});
+    pages.forEach((c,i)=>{if(i)pdf.addPage();pdf.addImage(c.toDataURL("image/jpeg",.9),"JPEG",0,0,210,297);});
+    const d=new Date(),fn=`我的輔導者自畫像_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}.pdf`;
+    if(standalone){
+      try{const url=URL.createObjectURL(pdf.output("blob"));const link=document.createElement("a");link.href=url;link.download=fn;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);toast("PDF 已下載");}
+      catch(e){showImages(pages);}
+      return;
+    }
+    try{await dl.save({filename:fn,data:pdf.output("blob")});toast("PDF 已下載");}
+    catch(e){
+      const c=e&&e.code;
+      if(c==="declined")toast("已取消下載");
+      else if(c==="rate_limited")toast("下載視窗已開啟，請先完成或稍後再試");
+      else showImages(pages);
+    }
+  }catch(e){
+    toast("沒有產生成功，請稍後再試，或改用「複製自畫像摘要」");console.log("pdf",e);
+  }finally{btn.disabled=false;btn.textContent=label;}
+}
+
+/* ================= EVENTS ================= */
+let tt;function toast(m){const el=document.getElementById("toast");el.textContent=m;el.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>el.classList.remove("on"),1900);}
+function copyText(t){try{navigator.clipboard.writeText(t).then(()=>toast("已複製，可貼到筆記或 LINE"),()=>toast("無法自動複製，請改用長按選取"));}catch(e){toast("無法自動複製，請改用長按選取");}}
+document.addEventListener("click",e=>{
+  const g=e.target.closest("[data-go]");if(g){go(g.dataset.go);return;}
+  const p=e.target.closest("[data-pick]");if(p){D.p1.ans[D.p1.i]=+p.dataset.pick;save();page==="project"?rProj():rScene();return;}
+  const p3=e.target.closest("[data-pick3]");if(p3){D.p3.ans[D.p3.i]=+p3.dataset.pick3;save();page==="project-office"?rProjOffice():rOffice();return;}
+  const c=e.target.closest("[data-chip]");if(c){const a=arr(c.dataset.chip),v=+c.dataset.v,k=a.indexOf(v);k<0?a.push(v):a.splice(k,1);save();c.classList.toggle("on",k<0);return;}
+  const r=e.target.closest("[data-radio]");if(r){const v=+r.dataset.v,cur=getP(r.dataset.radio);setP(r.dataset.radio,cur===v?null:v);r.parentElement.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on",getP(r.dataset.radio)===+x.dataset.v));const tc=r.closest(".thc");if(tc)tc.classList.toggle("set",getP(r.dataset.radio)!=null);return;}
+  const a=e.target.closest("[data-act]");if(!a)return;const act=a.dataset.act;
+  if(act==="p1prev"&&D.p1.i>0){D.p1.i--;save();rScene();window.scrollTo(0,0);}
+  else if(act==="p1next"){if(D.p1.i<14){D.p1.i++;save();rScene();window.scrollTo(0,0);}else go("scenes-result");}
+  else if(act==="p1clear"){delete D.p1.ans[D.p1.i];save();rScene();}
+  else if(act==="p1back"){const f=SC.findIndex((_,i)=>D.p1.ans[i]===undefined);D.p1.i=f<0?0:f;save();go("scenes");}
+  else if(act==="spmid"||act==="spclr"){const i=+a.dataset.i;if(act==="spmid")D.p2.sp[i]=50;else delete D.p2.sp[i];save();
+    const box=document.getElementById("sp"+i);box.classList.toggle("unset",act==="spclr");box.querySelector("input").value=50;document.getElementById("spl"+i).textContent=spLabel(i);}
+  else if(act==="copy1")copyText(copy1());
+  else if(act==="copy2")copyText(copy2());
+  else if(act==="jump"){const el=document.getElementById(a.dataset.to);if(el)el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});}
+  else if(act==="p3prev"&&D.p3.i>0){D.p3.i--;save();rOffice();window.scrollTo(0,0);}
+  else if(act==="p3next"){if(D.p3.i<9){D.p3.i++;save();rOffice();window.scrollTo(0,0);}else go("office-result");}
+  else if(act==="p3clear"){delete D.p3.ans[D.p3.i];save();rOffice();}
+  else if(act==="p3back"){const f=SC3.findIndex((_,i)=>D.p3.ans[i]===undefined);D.p3.i=f<0?0:f;save();go("office");}
+  else if(act==="p3pprev"&&D.p3.i>0){D.p3.i--;save();rProjOffice();window.scrollTo(0,0);}
+  else if(act==="p3pnext"){if(D.p3.i<9){D.p3.i++;save();rProjOffice();window.scrollTo(0,0);}else{exitFs();go("office-result");}}
+  else if(act==="p3pclear"){delete D.p3.ans[D.p3.i];save();rProjOffice();}
+  else if(act==="copy3")copyText(copy3());
+  else if(act==="pdf")makePdf(a);
+  else if(act==="ovclose"){const o=document.getElementById("pdfov");if(o)o.remove();}
+  else if(act==="copyai")copyText(aiText());
+  else if(act==="copyrep")copyText(reportText());
+  else if(act==="wipe"){if(a.dataset.sure){D=fresh();save();toast("已清除");rHome();}else{a.dataset.sure="1";a.textContent="再按一次確認清除";}}
+  else if(act==="pjprev"&&D.p1.i>0){D.p1.i--;save();rProj();window.scrollTo(0,0);}
+  else if(act==="pjnext"){if(D.p1.i<14){D.p1.i++;save();rProj();window.scrollTo(0,0);}else{exitFs();go("scenes-result");}}
+  else if(act==="skprev"){D.p2.step=Math.max(0,(D.p2.step||0)-1);save();rProjSketch();window.scrollTo(0,0);}
+  else if(act==="sknext"){const s=D.p2.step||0;if(s<SK_N-1){D.p2.step=s+1;save();rProjSketch();window.scrollTo(0,0);}else{exitFs();go("portrait");}}
+  else if(act==="pjclear"){delete D.p1.ans[D.p1.i];save();rProj();}
+  else if(act==="pjfs"){const el=document.documentElement;
+    if(document.fullscreenElement){exitFs();}
+    else{try{const r=el.requestFullscreen&&el.requestFullscreen();document.body.classList.add("fs");if(r&&r.catch)r.catch(()=>{document.body.classList.add("fs");toast("瀏覽器不支援全螢幕，已隱藏上方選單");});}catch(err){document.body.classList.add("fs");toast("已隱藏上方選單");}}}
+});
+document.addEventListener("input",e=>{
+  const t=e.target;
+  if(t.dataset.bind){setP(t.dataset.bind,t.value);if(t.dataset.bind==="p2.name"){const el=document.getElementById("psent");if(el)el.textContent=portraitSentence();}}
+  if(t.dataset.sp!=null){const i=+t.dataset.sp;D.p2.sp[i]=+t.value;save();document.getElementById("sp"+i).classList.remove("unset");document.getElementById("spl"+i).textContent=spLabel(i);}
+});
+function exitFs(){document.body.classList.remove("fs");try{if(document.fullscreenElement)document.exitFullscreen();}catch(e){}}
+document.addEventListener("fullscreenchange",()=>{if(!document.fullscreenElement)document.body.classList.remove("fs");});
+document.addEventListener("keydown",e=>{
+  if(!page.startsWith("project")||(e.target.closest&&e.target.closest("textarea,input")))return;
+  if(page==="project-office"){const i3=D.p3.i;
+    if(e.key==="ArrowRight"&&i3<9){D.p3.i++;save();rProjOffice();}
+    else if(e.key==="ArrowLeft"&&i3>0){D.p3.i--;save();rProjOffice();}
+    else if(/^[1-5]$/.test(e.key)){D.p3.ans[i3]=ORDER(i3)[+e.key-1];save();rProjOffice();}
+    return;}
+  if(page==="project-sketch"){const s=D.p2.step||0;
+    if(e.key==="ArrowRight"&&s<SK_N-1){D.p2.step=s+1;save();rProjSketch();}
+    else if(e.key==="ArrowLeft"&&s>0){D.p2.step=s-1;save();rProjSketch();}
+    return;}
+  const i=D.p1.i;
+  if(e.key==="ArrowRight"&&i<14){D.p1.i++;save();rProj();}
+  else if(e.key==="ArrowLeft"&&i>0){D.p1.i--;save();rProj();}
+  else if(/^[1-5]$/.test(e.key)){D.p1.ans[i]=ORDER(i)[+e.key-1];save();rProj();}
+});
+function fromHash(){const h=location.hash.slice(1);page=PAGES.includes(h)?h:"home";render();}
+window.addEventListener("hashchange",fromHash);fromHash();
+</script>
+</body>
+</html>
