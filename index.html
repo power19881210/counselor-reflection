@@ -186,6 +186,12 @@ table.x th{color:var(--mute);font-weight:500}
 #pdfov .ovbar b{font-family:var(--font-display);font-weight:400;font-size:19px}
 #pdfov .ovpages{display:grid;gap:14px;padding:16px;max-width:720px;margin:0 auto}
 #pdfov img{width:100%;height:auto;display:block;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,.25);-webkit-touch-callout:default}
+#pdfroot .traj{grid-template-columns:repeat(15,1fr)!important}
+#pdfroot .phase{grid-template-columns:repeat(3,1fr)!important}
+#pdfroot .bar{grid-template-columns:auto 1fr auto!important}
+#pdfroot .td{font-size:13px}
+#pdfroot .pc-sub{font-family:var(--font-display);font-size:19px;line-height:1.7;color:var(--ink);margin-top:14px}
+#pdfroot .box{margin:0 0 6px}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:9px 18px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9}
 .toast.on{opacity:1}
 /* 投影／沉浸作答：夜晚的輔導室，深橄欖底、淡綠標記 */
@@ -508,6 +514,7 @@ function rP1(){
   app.innerHTML=`<section class="card">
    ${secHead("sun","我的介入傾向 · 此刻的自畫像",p1Title(st))}
    <div class="big-sent">${p1Desc(st)}</div>
+   ${n?`<div class="row" style="margin:-4px 0 14px"><button class="btn" data-act="pdf" data-kind="p1">下載這份分析（PDF）</button></div>`:""}
    <p class="note">這份結果整理你在本活動中選過的回應，提供可討論的假設。它不是正式心理測驗，也不能據此判定能力、人格或學派。</p>
    ${n?`<div class="box soft">${n<15?`這是依 ${n} 題形成的暫時回饋；尚有 ${15-n} 題未作答。`:"你已完成全部片段。不同情境可能帶出不同選擇，這份結果只是這一次的記錄。"}
    ${tops.length>1?"<br>最高次數並列，這裡會保留並列結果；不因分數接近就推論你具有整合取向或更成熟。":""}</div>`:""}
@@ -534,7 +541,8 @@ function rP1(){
     <textarea data-bind="p1.fitNote" placeholder="例如：我選擇提供方向，是因為這個情境中的孩子明確想要方法；其他時候我會先等待。">${esc(D.p1.fitNote)}</textarea>
    </div>
    <div class="row" style="margin-top:16px">
-    <button class="btn" data-act="copy1">複製分析文字</button>
+    <button class="btn" data-act="pdf" data-kind="p1">下載 PDF</button>
+    <button class="btn ghost" data-act="copy1">複製分析文字</button>
     <button class="btn" data-go="report">產出報告／給 AI 分析</button>
     <button class="btn ghost" data-act="p1back">回去作答</button>
     <button class="btn ghost" data-go="sketch">前往自我速寫</button>
@@ -999,6 +1007,7 @@ function rP3(){
   app.innerHTML=`<section class="card">
    ${secHead("house","校園站位 · 專業與行政之間的我",p3Title(st))}
    <div class="big-sent">${p3Desc(st)}</div>
+   ${n?`<div class="row" style="margin:-4px 0 14px"><button class="btn" data-act="pdf" data-kind="p3">下載這份分析（PDF）</button></div>`:""}
    <p class="note">這份結果整理你在這些校園處境中的選擇，提供可討論的假設。沒有哪一種站位比較正確；同一個人在不同學校、不同關係裡，也常會選得不一樣。</p>
    ${n?`<div class="box soft">${n<10?`這是依 ${n} 題形成的暫時回饋；尚有 ${10-n} 題未作答。`:"你已完成全部處境。這份結果只是這一次的記錄。"}${tops.length>1?"<br>最高次數並列，這裡會保留並列結果；不因分數接近就推論你更有彈性或更成熟。":""}</div>
    <div class="sec"><h3>站位光譜</h3>
@@ -1027,7 +1036,7 @@ function rP3(){
    <div class="sec"><h3>這份分析，貼近你嗎？</h3>
     <div class="chips">${["貼近我","部分貼近","不太貼近"].map((t,k)=>`<button class="chip ${D.p3.fit===k?"on":""}" data-radio="p3.fit" data-v="${k}">${t}</button>`).join("")}</div>
     <textarea data-bind="p3.fitNote" placeholder="例如：我選擇先承接，是因為這位導師剛接班很辛苦；換成資深導師我會直接說明界線。">${esc(D.p3.fitNote)}</textarea></div>
-   <div class="row" style="margin-top:16px"><button class="btn" data-act="copy3">複製分析文字</button><button class="btn" data-go="report">產出報告／給 AI 分析</button><button class="btn ghost" data-act="p3back">回去作答</button></div>
+   <div class="row" style="margin-top:16px"><button class="btn" data-act="pdf" data-kind="p3">下載 PDF</button><button class="btn ghost" data-act="copy3">複製分析文字</button><button class="btn" data-go="report">產出報告／給 AI 分析</button><button class="btn ghost" data-act="p3back">回去作答</button></div>
    <p class="disclaimer">處境與分類皆為本活動自編，未經心理計量驗證。實務提醒僅供討論參考，相關規定請依所屬學校與縣市確認。</p>
   </section>`;
 }
@@ -1148,7 +1157,7 @@ function rReport(){
   <section class="card">
    <h3 style="font-size:19px">② 完整報告</h3>
    <p class="note">包含情境札記分析、自畫像摘要與完整作答紀錄，適合存進筆記或給督導閱讀。</p>
-   <div class="row" style="margin:8px 0"><button class="btn" data-act="copyrep">複製完整報告</button><button class="btn" data-act="pdf">下載自畫像 PDF</button><button class="btn ghost" data-go="scenes-result">看情境札記結果</button><button class="btn ghost" data-go="portrait">看自畫像</button><button class="btn ghost" data-go="office-result">看校園站位結果</button></div>
+   <div class="row" style="margin:8px 0"><button class="btn" data-act="copyrep">複製完整報告</button><button class="btn" data-act="pdf" data-kind="all">下載完整報告 PDF</button><button class="btn ghost" data-act="pdf">只下載自畫像 PDF</button><button class="btn ghost" data-go="scenes-result">看情境札記結果</button><button class="btn ghost" data-go="portrait">看自畫像</button><button class="btn ghost" data-go="office-result">看校園站位結果</button></div>
    <div class="box" style="white-space:pre-wrap;font-size:13.5px;max-height:480px;overflow:auto">${esc(reportText())}</div>
   </section>`;
 }
@@ -1242,15 +1251,7 @@ function todayStr(){const d=new Date();return `${d.getFullYear()}/${d.getMonth()
 function pdfBlocks(){
   const S=summaryLists(),R=reflExcerpt(),B=[];
   const nameLine=(D.p2.name||"").trim();
-  B.push(`<div class="pcover">
-    <div class="pc-top"><span>同儕團督｜我是怎樣的輔導者？</span><span>${todayStr()}</span></div>
-    <div class="pc-arch"><svg viewBox="0 0 400 330" preserveAspectRatio="none" aria-hidden="true"><circle cx="150" cy="120" r="150" fill="none" stroke="#b9c2a6" stroke-width="1.2"/><circle cx="280" cy="220" r="150" fill="none" stroke="#b9c2a6" stroke-width="1.2"/></svg>
-      <div class="pc-eb">帶走一幅此刻的自畫像</div>
-      <div class="pc-sent">${mkChars(portraitSentence())}</div>
-      ${nameLine?`<div class="pc-sub">（我用自己的話命名）</div>`:""}
-    </div>
-    <p class="pc-quote">我們選擇的介入，也映照著我們是誰。</p>
-  </div>`);
+  B.push(coverHTML("帶走一幅此刻的自畫像",portraitSentence(),nameLine?"（我用自己的話命名）":""));
   if(S.L.length)B.push(`<div class="sec"><h3>我的光譜</h3>${ul(S.my)}</div>${spOverview()}`);
   if(S.L.length)B.push(groupReading());
   if(S.res.length)B.push(`<div class="sec"><h3>我的優勢｜可能的資源</h3>${ul(S.res)}</div><div class="sec"><h3>優勢用過頭的風險</h3>${ul(S.risk)}</div><div class="sec"><h3>下一個可嘗試的介入</h3>${ul(S.next)}</div>`);
@@ -1271,10 +1272,77 @@ function pdfBlocks(){
     <p class="disclaimer">這是自我反思草稿，不是心理測驗、學派分類或能力評量。選項與分類皆為本活動自編，未經心理計量驗證。</p></div>`);
   return B;
 }
-async function buildPages(){
+
+function coverHTML(eb,sent,sub){
+  return `<div class="pcover">
+    <div class="pc-top"><span>同儕團督｜我是怎樣的輔導者？</span><span>${todayStr()}</span></div>
+    <div class="pc-arch"><svg viewBox="0 0 400 330" preserveAspectRatio="none" aria-hidden="true"><circle cx="150" cy="120" r="150" fill="none" stroke="#b9c2a6" stroke-width="1.2"/><circle cx="280" cy="220" r="150" fill="none" stroke="#b9c2a6" stroke-width="1.2"/></svg>
+      <div class="pc-eb">${eb}</div>
+      <div class="pc-sent">${mkChars(sent)}</div>
+      ${sub?`<div class="pc-sub">${sub}</div>`:""}
+    </div>
+    <p class="pc-quote">我們選擇的介入，也映照著我們是誰。</p>
+  </div>`;
+}
+const fitTxt=k=>["貼近我","部分貼近","不太貼近"][k];
+function readingBoxes(cats,c,tops,withTh){
+  return cats.map((k,j)=>`${j===0?`<div class="sec"><h3>${withTh?"五類回應的閱讀":"五種站位的閱讀"}</h3></div>`:""}<div class="box"><b><span class="dot" style="background:${k.hex}"></span>${k.name}（${c[j]} 次）${tops.includes(j)?"　這次最常選":""}</b>
+    <div class="kv"><b>可能的優勢：</b>${k.strength}</div><div class="kv"><b>用過頭的風險：</b>${k.risk}</div><div class="kv"><b>團督追問：</b>${k.ask}</div><div class="kv"><b>下一個小實驗：</b>${k.exp}</div>${withTh?`<div class="kv"><b>理論／媒介映照：</b>${k.th}。${k.thd}</div>`:""}</div>`);
+}
+function barsHTML(cats,c,n,title){return `<div class="sec"><h3>${title}</h3>${cats.map((k,j)=>`<div class="bar"><span><span class="dot" style="background:${k.hex}"></span>${k.name}</span><span class="t"><i style="width:${c[j]/n*100}%;background:${k.hex}"></i></span><span class="n">${c[j]} 次，${Math.round(c[j]/n*100)}%</span></div>`).join("")}<p class="note">百分比＝該類選擇次數 ÷ 已作答 ${n} 題；略過不計。</p></div>`;}
+function pdfBlocksP1(withCover){
+  const st=p1Stats(),{c,n,tops}=st,I=innerSummary(),B=[];
+  if(withCover)B.push(coverHTML("情境札記・我的介入傾向",p1Desc(st),`${p1Title(st)}（已作答 ${n} / 15 題）`));
+  else B.push(`<div class="sec"><h3>情境札記・我的介入傾向</h3><div class="psent">${mkChars(p1Desc(st))}</div><p class="kv">${p1Title(st)}（已作答 ${n} / 15 題）</p></div>`);
+  if(!n)return B;
+  B.push(barsHTML(CATS,c,n,"回應光譜"));
+  const deep=document.createElement("div");deep.innerHTML=p1Deep();
+  [...deep.querySelectorAll(".sec")].forEach(s=>{const boxes=[...s.querySelectorAll(":scope > .box")];
+    if(boxes.length>=3&&!s.querySelector(".phase")){const head=s.cloneNode(true);head.querySelectorAll(":scope > .box").forEach(x=>x.remove());const rest=[...head.children].filter(x=>x.tagName!=="H3");rest.forEach(x=>x.remove());
+      B.push(head.outerHTML);boxes.forEach(x=>B.push(x.outerHTML));if(rest.length)B.push(rest.map(x=>x.outerHTML).join(""));}
+    else B.push(s.outerHTML);});
+  B.push(...readingBoxes(CATS,c,tops,true));
+  B.push(`<div class="sec"><h3>回應背後的自己</h3><div class="box">${I.any?`你勾選過：${INNER.map((f,k)=>I.cnt[k]?`${f}（${I.cnt[k]} 段）`:"").filter(Boolean).join("、")}。這是你的自我描述，不代表這些感受一定促成某種介入。`:"你尚未記錄內在反應。"}</div>${I.combo.length?`<div class="box soft">在第 ${I.combo.join("、")} 段，你同時選了結構與行動，以及想幫上忙／擔心進展。可以討論：這個方法如何回應孩子的需要？又如何回應我當時的感受？</div>`:""}</div>`);
+  const b=document.createElement("div");b.innerHTML=bridgeHTML();const bs=b.querySelector(".sec");if(bs&&!bs.textContent.includes("至少作答"))B.push(bs.outerHTML);
+  if(D.p1.fit!=null||D.p1.fitNote.trim())B.push(`<div class="sec"><h3>這份分析，貼近我嗎？</h3>${D.p1.fit!=null?`<p class="kv">${fitTxt(D.p1.fit)}</p>`:""}${D.p1.fitNote.trim()?`<div class="box">${esc(D.p1.fitNote.trim())}</div>`:""}</div>`);
+  return B;
+}
+function pdfBlocksP3(withCover){
+  const st=p3Stats(),{c,n,tops}=st,I=inner3(),B=[];
+  if(withCover)B.push(coverHTML("校園站位・專業與行政之間的我",p3Desc(st),`${p3Title(st)}（已作答 ${n} / 10 題）`));
+  else B.push(`<div class="sec"><h3>校園站位・專業與行政之間的我</h3><div class="psent">${mkChars(p3Desc(st))}</div><p class="kv">${p3Title(st)}（已作答 ${n} / 10 題）</p></div>`);
+  if(!n)return B;
+  B.push(barsHTML(CATS3,c,n,"站位光譜"));
+  B.push(`<div class="sec"><h3>不同處境下的你</h3>${TYPES3.map(t=>{const r=count3(t[1]);return `<div class="box"><b>當${t[0]}</b>${r.n?`${miniBar3(r.c,r.n)}<div class="kv">你較常${nm3(dom(r.c))}。</div><div class="note">團督追問：${t[2]}</div>`:`<div class="note">這類處境尚未作答。</div>`}</div>`;}).join("")}</div>`);
+  B.push(...readingBoxes(CATS3,c,tops,false));
+  let first=true;
+  SC3.forEach((s,i)=>{const v=D.p3.ans[i];if(v===undefined)return;B.push(`${first?`<div class="sec"><h3>我的選擇與實務提醒</h3></div>`:""}<div class="box"><b>第 ${i+1} 題｜${s[0]}</b><div class="kv"><span class="tagc" style="background:${CATS3[v].hex}">${CATS3[v].name}</span>${s[4][v]}</div><div class="note">實務提醒：${s[5]}</div></div>`);first=false;});
+  B.push(`<div class="sec"><h3>處境背後的自己</h3><div class="box">${I.any?`你勾選過：${INNER3.map((f,k)=>I.cnt[k]?`${f}（${I.cnt[k]} 題）`:"").filter(Boolean).join("、")}。`:"你尚未記錄內在反應。"}</div>${I.combo.length?`<div class="box soft">在第 ${I.combo.join("、")} 題，你選了承接補位，同時感到擔心破壞關係或被消耗。可以討論：這次的補位，是孩子需要，還是關係的壓力？</div>`:""}</div>`);
+  const BR=bridge13();if(BR)B.push(`<div class="sec"><h3>對孩子的我，與在校園裡的我</h3><div class="box soft">${BR}</div></div>`);
+  if(D.p3.fit!=null||D.p3.fitNote.trim())B.push(`<div class="sec"><h3>這份分析，貼近我嗎？</h3>${D.p3.fit!=null?`<p class="kv">${fitTxt(D.p3.fit)}</p>`:""}${D.p3.fitNote.trim()?`<div class="box">${esc(D.p3.fitNote.trim())}</div>`:""}</div>`);
+  return B;
+}
+const CLOSING=`<div class="sec"><h3>把分析帶回一段真實互動</h3><p class="kv">挑一個最近的晤談片段，依序說明：</p>
+    <ol class="steps"><li>孩子當時說了或做了什麼？</li><li>我注意到哪些想法、情緒與身體訊號？</li><li>我選擇了什麼回應？希望它產生什麼作用？</li><li>孩子接下來怎麼反應？</li><li>如果多一種選擇，我願意試什麼？</li></ol>
+    <p class="disclaimer">這是自我反思草稿，不是心理測驗、學派分類或能力評量。選項與分類皆為本活動自編，未經心理計量驗證。</p></div>`;
+function blocksFor(kind){
+  if(kind==="p1")return [...pdfBlocksP1(true),CLOSING];
+  if(kind==="p3")return [...pdfBlocksP3(true),`<p class="disclaimer">處境與分類皆為本活動自編，未經心理計量驗證。實務提醒僅供討論參考，相關規定請依所屬學校與縣市確認。</p>`];
+  if(kind==="all"){
+    const parts=[];if(Object.keys(D.p1.ans).length)parts.push(p1Desc(p1Stats()));if(located().length||(D.p2.name||"").trim())parts.push(portraitSentence()+"。");if(Object.keys(D.p3.ans).length)parts.push(p3Desc(p3Stats()));
+    const port=pdfBlocks();port.shift();port.pop();
+    const B=[coverHTML("我的完整報告",parts[0]||"我是正在認識自己的輔導老師。",parts.slice(1).join(" "))];
+    B.push(`<div class="sec"><h3>自我速寫・此刻的自畫像</h3><div class="psent">${mkChars(portraitSentence())}</div></div>`,...port.filter(x=>!x.includes("情境札記：我的介入傾向")&&!x.includes("校園站位：專業與行政")));
+    if(Object.keys(D.p1.ans).length)B.push(...pdfBlocksP1(false));
+    if(Object.keys(D.p3.ans).length)B.push(...pdfBlocksP3(false));
+    B.push(CLOSING);return B;
+  }
+  return pdfBlocks();
+}
+async function buildPages(kind){
   await loadScript(LIB_H2C);
   const root=document.createElement("div");root.id="pdfroot";
-  root.innerHTML=pdfBlocks().map(b=>`<div class="pb">${b}</div>`).join("");
+  root.innerHTML=blocksFor(kind).map(b=>`<div class="pb">${b}</div>`).join("");
   document.body.appendChild(root);
   try{
     await document.fonts.ready;await new Promise(r=>setTimeout(r,500));await document.fonts.ready;
@@ -1307,7 +1375,7 @@ async function buildPages(){
 function showImages(pages){
   const old=document.getElementById("pdfov");if(old)old.remove();
   const ov=document.createElement("div");ov.id="pdfov";ov.setAttribute("role","dialog");ov.setAttribute("aria-label","自畫像圖片版");
-  ov.innerHTML=`<div class="ovbar"><div><b>自畫像圖片版（共 ${pages.length} 頁）</b><div class="note">這個瀏覽器無法直接存 PDF。長按每一頁圖片，選「下載圖片」或「分享」即可帶走；電腦可按右鍵另存。</div></div><button class="btn sm" data-act="ovclose">關閉</button></div>
+  ov.innerHTML=`<div class="ovbar"><div><b>圖片版（共 ${pages.length} 頁）</b><div class="note">這個瀏覽器無法直接存 PDF。長按每一頁圖片，選「下載圖片」或「分享」即可帶走；電腦可按右鍵另存。</div></div><button class="btn sm" data-act="ovclose">關閉</button></div>
    <div class="ovpages">${pages.map((c,i)=>`<img src="${c.toDataURL("image/jpeg",.9)}" alt="自畫像第 ${i+1} 頁">`).join("")}</div>`;
   document.body.appendChild(ov);
 }
@@ -1317,13 +1385,14 @@ async function makePdf(btn){
   try{dl=window.claude&&window.claude.use?await window.claude.use("downloads"):null;}catch(e){dl=null;}
   btn.disabled=true;btn.textContent="正在產生……";
   try{
-    const pages=await buildPages();
+    const kind=btn.dataset.kind||"portrait";
+    const pages=await buildPages(kind);
     const standalone=!window.claude; // 放在自己的網站時，沒有 Claude 的外框，可直接下載
     if(!dl&&!standalone){showImages(pages);return;}
     await loadScript(LIB_PDF);
     const {jsPDF}=window.jspdf;const pdf=new jsPDF({unit:"mm",format:"a4"});
     pages.forEach((c,i)=>{if(i)pdf.addPage();pdf.addImage(c.toDataURL("image/jpeg",.9),"JPEG",0,0,210,297);});
-    const d=new Date(),fn=`我的輔導者自畫像_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}.pdf`;
+    const d=new Date(),ds=`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`,fn=`${{p1:"情境札記_我的介入傾向",p3:"校園站位_專業與行政之間的我",all:"我是怎樣的輔導者_完整報告"}[kind]||"我的輔導者自畫像"}_${ds}.pdf`;
     if(standalone){
       try{const url=URL.createObjectURL(pdf.output("blob"));const link=document.createElement("a");link.href=url;link.download=fn;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);toast("PDF 已下載");}
       catch(e){showImages(pages);}
