@@ -192,6 +192,7 @@ table.x th{color:var(--mute);font-weight:500}
 #pdfroot .td{font-size:13px}
 #pdfroot .pc-sub{font-family:var(--font-display);font-size:19px;line-height:1.7;color:var(--ink);margin-top:14px}
 #pdfroot .box{margin:0 0 6px}
+#pdfroot .rec .rq{font-family:var(--font-display);font-size:17px;margin:4px 0}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:9px 18px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9}
 .toast.on{opacity:1}
 /* 投影／沉浸作答：夜晚的輔導室，深橄欖底、淡綠標記 */
@@ -1305,6 +1306,12 @@ function pdfBlocksP1(withCover){
   B.push(`<div class="sec"><h3>回應背後的自己</h3><div class="box">${I.any?`你勾選過：${INNER.map((f,k)=>I.cnt[k]?`${f}（${I.cnt[k]} 段）`:"").filter(Boolean).join("、")}。這是你的自我描述，不代表這些感受一定促成某種介入。`:"你尚未記錄內在反應。"}</div>${I.combo.length?`<div class="box soft">在第 ${I.combo.join("、")} 段，你同時選了結構與行動，以及想幫上忙／擔心進展。可以討論：這個方法如何回應孩子的需要？又如何回應我當時的感受？</div>`:""}</div>`);
   const b=document.createElement("div");b.innerHTML=bridgeHTML();const bs=b.querySelector(".sec");if(bs&&!bs.textContent.includes("至少作答"))B.push(bs.outerHTML);
   if(D.p1.fit!=null||D.p1.fitNote.trim())B.push(`<div class="sec"><h3>這份分析，貼近我嗎？</h3>${D.p1.fit!=null?`<p class="kv">${fitTxt(D.p1.fit)}</p>`:""}${D.p1.fitNote.trim()?`<div class="box">${esc(D.p1.fitNote.trim())}</div>`:""}</div>`);
+  SC.forEach((s,i)=>{const v=D.p1.ans[i],inn=(D.p1.inner[i]||[]).map(k=>INNER[k]);
+    B.push(`${i===0?`<div class="sec"><h3>我的作答紀錄（15 題）</h3><p class="note">逐題保留情境與你的選擇，方便日後回看或帶進團督。</p></div>`:""}<div class="box rec"><b>第 ${i+1} 題｜${s[0]}</b>
+      <div class="note">情境：${s[1]}</div>
+      <div class="rq">小禾：「${s[2]}」</div>
+      ${v!==undefined?`<div class="kv"><span class="tagc" style="background:${CATS[v].hex}">${CATS[v].name}</span>${s[3][v]}</div>`:`<div class="kv note">這題略過。</div>`}
+      ${inn.length?`<div class="note">當下的內在反應：${inn.join("、")}</div>`:""}</div>`);});
   return B;
 }
 function pdfBlocksP3(withCover){
