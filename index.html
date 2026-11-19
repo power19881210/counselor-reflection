@@ -224,6 +224,15 @@ table.x th{color:var(--mute);font-weight:500}
   #printroot .rec .rq{font-family:var(--font-display);font-size:12.5pt;margin:3px 0}
   #printroot .disclaimer{font-size:9pt}
 }
+.lnbg{position:fixed;inset:0;z-index:30;background:rgba(40,44,36,.55);display:flex;align-items:center;justify-content:center;padding:18px}
+.lnbg[hidden]{display:none}
+.lnbox{background:var(--card);border-radius:20px;padding:26px 24px 22px;max-width:380px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+.lnbox h2{font-size:24px;margin:0 0 10px}
+.lnbox p{margin:0 0 18px;color:var(--ink);line-height:1.9}
+.lnbox .row{justify-content:flex-end}
+.btn.lnext{background:#06c755;border-color:#06c755;text-decoration:none;display:inline-block}
+.btn.lnext[hidden]{display:none}
+@media print{.lnbg{display:none!important}}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:9px 18px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9}
 .toast.on{opacity:1}
 /* 投影／沉浸作答：夜晚的輔導室，深橄欖底、淡綠標記 */
@@ -292,6 +301,13 @@ body.proj.fs header.top{display:none}
 
 </head>
 <body>
+<div class="lnbg" id="lnNotice" role="dialog" aria-modal="true" aria-labelledby="lnTitle" hidden>
+  <div class="lnbox">
+    <h2 id="lnTitle">開啟方式提醒</h2>
+    <p>請不要用 LINE 內建瀏覽器開啟本頁，<br>否則可能無法下載 PDF。<br>請改用外部瀏覽器（Chrome、Safari）開啟。</p>
+    <div class="row"><a class="btn lnext" id="lnExt" href="#" hidden>用外部瀏覽器開啟</a><button class="btn ghost" id="lnOk">確認</button></div>
+  </div>
+</div>
 <div class="wrap">
 <header class="top">
   <div class="brand">同儕團督｜我是怎樣的輔導者？<small>自我覺察練習</small></div>
@@ -1439,7 +1455,7 @@ async function printPdf(kind,btn){
   finally{btn.disabled=false;btn.textContent=label;}
 }
 async function makePdf(btn){
-  if(!window.claude){return printPdf(btn.dataset.kind||"portrait",btn);}
+  if(!window.claude){if(IN_LINE){showLineNotice(true);return;}return printPdf(btn.dataset.kind||"portrait",btn);}
   const label=btn.textContent;
   let dl=null;
   try{dl=window.claude&&window.claude.use?await window.claude.use("downloads"):null;}catch(e){dl=null;}
@@ -1536,6 +1552,17 @@ document.addEventListener("keydown",e=>{
 });
 function fromHash(){const h=location.hash.slice(1);page=PAGES.includes(h)?h:"home";render();}
 window.addEventListener("hashchange",fromHash);fromHash();
+/* ===== LINE 內建瀏覽器提醒（只在自己的網站顯示） ===== */
+const IN_LINE=/\bLine\//i.test(navigator.userAgent);
+function showLineNotice(force){
+  const bg=document.getElementById("lnNotice");if(!bg)return;
+  if(!force){try{if(sessionStorage.getItem("lnSeen"))return;}catch(e){}}
+  if(IN_LINE){const a=document.getElementById("lnExt");const u=new URL(location.href);u.searchParams.set("openExternalBrowser","1");a.href=u.toString();a.hidden=false;}
+  bg.hidden=false;document.getElementById("lnOk").focus();
+}
+document.getElementById("lnOk").addEventListener("click",()=>{document.getElementById("lnNotice").hidden=true;try{sessionStorage.setItem("lnSeen","1");}catch(e){}});
+setTimeout(()=>{if(!window.claude)showLineNotice(false);},400);
+
 </script>
 </body>
 </html>
