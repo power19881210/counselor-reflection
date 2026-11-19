@@ -1556,11 +1556,10 @@ window.addEventListener("hashchange",fromHash);fromHash();
 const IN_LINE=/\bLine\//i.test(navigator.userAgent);
 function showLineNotice(force){
   const bg=document.getElementById("lnNotice");if(!bg)return;
-  if(!force){try{if(sessionStorage.getItem("lnSeen"))return;}catch(e){}}
   if(IN_LINE){const a=document.getElementById("lnExt");const u=new URL(location.href);u.searchParams.set("openExternalBrowser","1");a.href=u.toString();a.hidden=false;}
   bg.hidden=false;document.getElementById("lnOk").focus();
 }
-document.getElementById("lnOk").addEventListener("click",()=>{document.getElementById("lnNotice").hidden=true;try{sessionStorage.setItem("lnSeen","1");}catch(e){}});
+document.getElementById("lnOk").addEventListener("click",()=>{document.getElementById("lnNotice").hidden=true;});
 setTimeout(()=>{if(!window.claude)showLineNotice(false);},400);
 
 </script>
